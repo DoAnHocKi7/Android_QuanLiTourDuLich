@@ -10,9 +10,8 @@ import android.view.MenuItem;
 import android.widget.GridView;
 import android.widget.Toast;
 
-import com.example.tranthibay.ql_tourdulich.GridView.TourAdapter;
 import com.example.tranthibay.ql_tourdulich.R;
-import com.example.tranthibay.ql_tourdulich.View.DangNhap.DangNhapActivity;
+import com.example.tranthibay.ql_tourdulich.View.DangNhap.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,30 +41,30 @@ public class TourActivity extends AppCompatActivity {
         lst.add("Tran Khoi");
         lst.add("Tran Thi Bay");
 
-        TourAdapter adapter = new TourAdapter(this, lst);
-        gv_tour.setAdapter(adapter);
-        bottomNav = (BottomNavigationView) findViewById(R.id.navigation);
-        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                Intent intent;
-                switch (menuItem.getItemId()) {
-                    case R.id.navigation_home:
-                        Toast.makeText(TourActivity.this, "Home", Toast.LENGTH_SHORT).show();
-                        intent = new Intent(TourActivity.this, DangNhapActivity.class);
-                        startActivity(intent);
-                        return true;
-                    case R.id.navigation_dashboard: {
-                        Toast.makeText(TourActivity.this, "DashBoard", Toast.LENGTH_SHORT).show();
-
-                        return true;
-                    }
-                    case R.id.navigation_notifications:
-                        Toast.makeText(TourActivity.this, "Notification", Toast.LENGTH_SHORT).show();
-                        return true;
-                }
-                return false;
-            }
-        });
+//        TourAdapter adapter = new TourAdapter(this, lst);
+//        gv_tour.setAdapter(adapter);
+//        bottomNav = (BottomNavigationView) findViewById(R.id.navigation);
+//        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+//                Intent intent;
+//                switch (menuItem.getItemId()) {
+//                    case R.id.navigation_home:
+//                        Toast.makeText(TourActivity.this, "Home", Toast.LENGTH_SHORT).show();
+//                        intent = new Intent(TourActivity.this, LoginActivity.class);
+//                        startActivity(intent);
+//                        return true;
+//                    case R.id.navigation_dashboard: {
+//                        Toast.makeText(TourActivity.this, "DashBoard", Toast.LENGTH_SHORT).show();
+//
+//                        return true;
+//                    }
+//                    case R.id.navigation_notifications:
+//                        Toast.makeText(TourActivity.this, "Notification", Toast.LENGTH_SHORT).show();
+//                        return true;
+//                }
+//                return false;
+//            }
+//        });
     }
 }

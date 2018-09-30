@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="63a13451-4b04-401a-bfac-ec7abe0bdc91" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="$PROJECT_DIR$/QL_TourDuLich/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/QL_TourDuLich/.idea/caches/build_file_checksums.ser" />
-      <change beforePath="$PROJECT_DIR$/QL_TourDuLich/.idea/misc.xml" afterPath="$PROJECT_DIR$/QL_TourDuLich/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/QL_TourDuLich/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/QL_TourDuLich/app/src/main/AndroidManifest.xml" />
-      <change beforePath="$PROJECT_DIR$/QL_TourDuLich/app/src/main/java/com/example/tranthibay/ql_tourdulich/Constants/PHPConnection.java" afterPath="$PROJECT_DIR$/QL_TourDuLich/app/src/main/java/com/example/tranthibay/ql_tourdulich/Constants/PHPConnection.java" />
-      <change beforePath="$PROJECT_DIR$/QL_TourDuLich/app/src/main/java/com/example/tranthibay/ql_tourdulich/Model/DangNhap/LoginModel.java" afterPath="$PROJECT_DIR$/QL_TourDuLich/app/src/main/java/com/example/tranthibay/ql_tourdulich/Model/DangNhap/LoginModel.java" />
-      <change beforePath="$PROJECT_DIR$/QL_TourDuLich/app/src/main/java/com/example/tranthibay/ql_tourdulich/Model/ShowTour/TourModel.java" afterPath="$PROJECT_DIR$/QL_TourDuLich/app/src/main/java/com/example/tranthibay/ql_tourdulich/Model/ShowTour/TourModel.java" />
-      <change beforePath="$PROJECT_DIR$/QL_TourDuLich/app/src/main/java/com/example/tranthibay/ql_tourdulich/Presenter/DangNhap/LoginImlementPresenter.java" afterPath="$PROJECT_DIR$/QL_TourDuLich/app/src/main/java/com/example/tranthibay/ql_tourdulich/Presenter/DangNhap/LoginImlementPresenter.java" />
-      <change beforePath="$PROJECT_DIR$/QL_TourDuLich/app/src/main/java/com/example/tranthibay/ql_tourdulich/Presenter/DangNhap/LoginLogicPresenter.java" afterPath="$PROJECT_DIR$/QL_TourDuLich/app/src/main/java/com/example/tranthibay/ql_tourdulich/Presenter/DangNhap/LoginLogicPresenter.java" />
-      <change beforePath="$PROJECT_DIR$/QL_TourDuLich/app/src/main/java/com/example/tranthibay/ql_tourdulich/Services/MySqlHelper.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/QL_TourDuLich/app/src/main/java/com/example/tranthibay/ql_tourdulich/View/DangNhap/DangNhapActivity.java" afterPath="$PROJECT_DIR$/QL_TourDuLich/app/src/main/java/com/example/tranthibay/ql_tourdulich/View/DangNhap/DangNhapActivity.java" />
-      <change beforePath="$PROJECT_DIR$/QL_TourDuLich/app/src/main/res/layout/activity_dang_nhap.xml" afterPath="$PROJECT_DIR$/QL_TourDuLich/app/src/main/res/layout/activity_dang_nhap.xml" />
-    </list>
+    <list default="true" id="63a13451-4b04-401a-bfac-ec7abe0bdc91" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,11 +37,11 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
       <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">

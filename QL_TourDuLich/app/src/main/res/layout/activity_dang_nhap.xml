@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#edebfdff"
-    tools:context=".View.DangNhap.DangNhapActivity">
+    tools:context=".View.DangNhap.LoginActivity">
 
     <EditText
         android:id="@+id/login_et_userName"
@@ -32,9 +32,9 @@
         android:id="@+id/login_btn_login"
         android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_below="@+id/login_et_password"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="202dp"
         android:background="#529be9"
         android:text="Đăng nhập"
         android:textColor="#ffffff" />
@@ -48,6 +48,26 @@
         android:scaleType="fitXY"
         app:srcCompat="@drawable/icon_login" />
 
+    <Button
+        android:id="@+id/login_btn_toSignUp"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:background="#3effa2"
+        android:textColor="#ffff"
+        android:text="Đăng ký" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="189dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="128dp"
+        android:text="Nếu bạn chưa có tài khoản"
+        android:textStyle="bold"/>
 
 
 </RelativeLayout>

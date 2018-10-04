@@ -26,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
 
-
+        int x = 5;
+        x = x + 5;
 
         this.bottomNavigationView = (BottomNavigationView) findViewById( R.id.bottomNav );
         this.selectedFragment = new Fragment1();

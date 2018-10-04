@@ -2,6 +2,7 @@ package com.example.tranthibay.ql_tourdulich.Model.ShowTour;
 
 public class TourModel {
 
+
     private String maTour;
 
     public String getMaTour() {

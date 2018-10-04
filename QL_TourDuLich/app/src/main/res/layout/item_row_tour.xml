@@ -8,7 +8,7 @@
     android:paddingRight="20dp">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/show_tour_item_img_Tour"
         android:layout_width="wrap_content"
         android:layout_height="140dp"
         app:srcCompat="@drawable/ho_guom" />

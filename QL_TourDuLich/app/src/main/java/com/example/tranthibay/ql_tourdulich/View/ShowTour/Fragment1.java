@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tranthibay.ql_tourdulich.Adapter.TourRecyclerViewAdapter;
+import com.example.tranthibay.ql_tourdulich.Constants.PHPConnectionConstants;
 import com.example.tranthibay.ql_tourdulich.Model.ShowTour.TourModel;
 import com.example.tranthibay.ql_tourdulich.Presenter.ShowTour.TourLogicPresenter;
 import com.example.tranthibay.ql_tourdulich.R;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
 public class Fragment1 extends Fragment {
     ArrayList<TourModel> data;
     RecyclerView mRecyclerView;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -33,22 +35,20 @@ public class Fragment1 extends Fragment {
         mRecyclerView = (RecyclerView) view.findViewById( R.id.recycle_ShowTour );
         data = new ArrayList<>();
 
-        TourLogicPresenter logicPresenter=new TourLogicPresenter( this.getContext() );
+        TourLogicPresenter logicPresenter = new TourLogicPresenter( this.getContext() );
         logicPresenter.getTourDulich( new VolleyCallback() {
             @Override
             public void onSuccess(JSONArray result) {
-                TourModel tour=null;
-                for (int i=0;i<result.length();i++){
+                TourModel tour = null;
+                for (int i = 0; i < result.length(); i++) {
                     try {
-                        JSONObject item= result.getJSONObject(i);
-                        String ma=item.getString( "Matour" );
-                        String ten=item.getString( "TenTour" );
-                        String img=item.getString( "HinhAnh" );
-                        String gia=item.getString( "Gia" );
-                        String loai=item.getString( "LoaiTour" );
-                        tour=new TourModel(item.getString( "Matour" ),item.getString( "TenTour" ),
-                                item.getString( "HinhAnh" ),item.getDouble( "Gia" ),
-                                item.getString( "LoaiTour" ) );
+                        JSONObject item = result.getJSONObject( i );
+                        String ma = item.getString( "Matour" );
+                        String ten = item.getString( "TenTour" );
+                        String img = PHPConnectionConstants.HOST+"/web_QLTourDuLich_php/tour_dulich/" + item.getString( "HinhAnh" );
+                        Double gia = item.getDouble( "Gia" );
+                        String loai = item.getString( "LoaiTour" );
+                        tour = new TourModel( ma, ten, img, gia, loai );
                         data.add( tour );
 
                     } catch (JSONException e) {

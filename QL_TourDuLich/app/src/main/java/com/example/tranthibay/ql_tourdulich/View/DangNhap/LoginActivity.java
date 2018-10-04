@@ -14,7 +14,7 @@ import com.example.tranthibay.ql_tourdulich.Presenter.DangNhap.LoginLogicPresent
 import com.example.tranthibay.ql_tourdulich.R;
 import com.example.tranthibay.ql_tourdulich.Services.InternalStorageHelper;
 import com.example.tranthibay.ql_tourdulich.View.DangKy.SignUpActivity;
-import com.example.tranthibay.ql_tourdulich.View.ShowTour.TourActivity;
+import com.example.tranthibay.ql_tourdulich.View.MainActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
     private EditText edt_Username;
@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         LoginLogicPresenter logicPresenter = new LoginLogicPresenter( this );
         String userDaLogin = logicPresenter.layUserDaDangNhap( this );
         if (userDaLogin!=null&&!userDaLogin.isEmpty()) {
-            Intent intent = new Intent( this, TourActivity.class );
+            Intent intent = new Intent( this, MainActivity.class );
             intent.putExtra( DangNhapConstants.Username, userDaLogin );
             startActivity( intent );
             return;
@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                 if (!userName.isEmpty() && !password.isEmpty()) {
                     LoginLogicPresenter loginLogic = new LoginLogicPresenter( LoginActivity.this );
                     loginLogic.xuLiDangNhap( userName, password, LoginActivity.this );
-                    Intent intent = new Intent( LoginActivity.this, TourActivity.class );
+                    Intent intent = new Intent( LoginActivity.this, MainActivity.class );
                     intent.putExtra( DangNhapConstants.Username, userDaLogin );
                     startActivity( intent );
                 }else{

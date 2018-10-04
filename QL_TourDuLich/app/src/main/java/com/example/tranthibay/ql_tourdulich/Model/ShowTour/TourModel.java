@@ -49,6 +49,9 @@ public class TourModel {
     private double gia;
     private String loaiTour;
 
+    public TourModel() {
+    }
+
     public TourModel(String maTour, String tenTour, String hinhAnh, double gia, String loaiTour) {
         this.maTour = maTour;
         this.tenTour = tenTour;

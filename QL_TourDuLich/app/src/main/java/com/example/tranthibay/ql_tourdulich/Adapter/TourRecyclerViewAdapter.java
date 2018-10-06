@@ -1,8 +1,7 @@
 package com.example.tranthibay.ql_tourdulich.Adapter;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,31 +9,28 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.tranthibay.ql_tourdulich.Constants.TourConstants;
 import com.example.tranthibay.ql_tourdulich.Model.ShowTour.TourModel;
 import com.example.tranthibay.ql_tourdulich.R;
-import com.example.tranthibay.ql_tourdulich.Services.ImageServices;
+import com.example.tranthibay.ql_tourdulich.View.ChiTietTour.ChiTietTourActivity;
 import com.squareup.picasso.Picasso;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 public class TourRecyclerViewAdapter extends RecyclerView.Adapter<TourRecyclerViewAdapter.RecyclerViewHolder> {
 
-    private List<TourModel> data = new ArrayList<>();
+    //private List<TourModel> data = new ArrayList<>();
+    private List<TourModel> data;
+    private Context context;
 
-    public TourRecyclerViewAdapter(List<TourModel> data) {
+    public TourRecyclerViewAdapter(List<TourModel> data, Context context) {
         this.data = data;
+        this.context = context;
     }
 
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from( parent.getContext() );
+        LayoutInflater inflater = LayoutInflater.from( context );
         View view = inflater.inflate( R.layout.item_row_tour, parent, false );
         return new RecyclerViewHolder( view );
     }
@@ -67,6 +63,16 @@ public class TourRecyclerViewAdapter extends RecyclerView.Adapter<TourRecyclerVi
             tv_TenTour = (TextView) itemView.findViewById( R.id.tv_TenTour );
             tv_GiaTour = (TextView) itemView.findViewById( R.id.frag_ShowTour_tv_GiaTour );
             img_Tour = (ImageView) itemView.findViewById( R.id.show_tour_item_img_Tour );
+            itemView.setOnClickListener( new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    TourModel tourModel = data.get( getAdapterPosition() );
+                    Intent intent = new Intent( context, ChiTietTourActivity.class );
+                    intent.putExtra( TourConstants.PASSEDTOUR, tourModel );
+                    context.startActivity( intent );
+                }
+            } );
         }
+
     }
 }

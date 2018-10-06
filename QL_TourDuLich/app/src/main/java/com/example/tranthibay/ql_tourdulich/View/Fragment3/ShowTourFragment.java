@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.tranthibay.ql_tourdulich.R;
 
-public class Fragment3 extends Fragment {
+public class ShowTourFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

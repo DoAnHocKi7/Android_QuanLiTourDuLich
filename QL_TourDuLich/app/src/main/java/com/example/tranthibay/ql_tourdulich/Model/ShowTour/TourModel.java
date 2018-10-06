@@ -1,9 +1,17 @@
 package com.example.tranthibay.ql_tourdulich.Model.ShowTour;
 
-public class TourModel {
 
+import java.io.Serializable;
 
-    private String maTour;
+public class TourModel implements Serializable {
+    public String getMota() {
+        return mota;
+    }
+
+    public void setMota(String mota) {
+        this.mota = mota;
+    }
+
 
     public String getMaTour() {
         return maTour;
@@ -49,15 +57,18 @@ public class TourModel {
     private String hinhAnh;
     private double gia;
     private String loaiTour;
+    private String mota;
+    private String maTour;
 
     public TourModel() {
     }
 
-    public TourModel(String maTour, String tenTour, String hinhAnh, double gia, String loaiTour) {
+    public TourModel(String maTour, String tenTour, String hinhAnh, double gia, String loaiTour, String mota) {
         this.maTour = maTour;
         this.tenTour = tenTour;
         this.hinhAnh = hinhAnh;
         this.gia = gia;
         this.loaiTour = loaiTour;
+        this.mota = mota;
     }
 }

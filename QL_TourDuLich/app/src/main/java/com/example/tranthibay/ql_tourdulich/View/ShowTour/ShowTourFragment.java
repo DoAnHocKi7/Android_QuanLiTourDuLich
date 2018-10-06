@@ -24,7 +24,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Fragment1 extends Fragment {
+public class ShowTourFragment extends Fragment {
     ArrayList<TourModel> data;
     RecyclerView mRecyclerView;
 
@@ -45,17 +45,19 @@ public class Fragment1 extends Fragment {
                         JSONObject item = result.getJSONObject( i );
                         String ma = item.getString( "Matour" );
                         String ten = item.getString( "TenTour" );
-                        String img = PHPConnectionConstants.HOST+"/web_QLTourDuLich_php/tour_dulich/" + item.getString( "HinhAnh" );
+                        String img = PHPConnectionConstants.HOST + "/web_QLTourDuLich_php/tour_dulich/" + item.getString( "HinhAnh" );
                         Double gia = item.getDouble( "Gia" );
                         String loai = item.getString( "LoaiTour" );
-                        tour = new TourModel( ma, ten, img, gia, loai );
+                        String mota = item.getString( "MoTa" );
+                        tour = new TourModel( ma, ten, img, gia, loai, mota );
                         data.add( tour );
 
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
-                TourRecyclerViewAdapter mRcvAdapter = new TourRecyclerViewAdapter( data );
+                //sdfghjk
+                TourRecyclerViewAdapter mRcvAdapter = new TourRecyclerViewAdapter( data, view.getContext() );
                 GridLayoutManager layoutManager = new GridLayoutManager( view.getContext(), 2 );
                 layoutManager.setOrientation( LinearLayoutManager.VERTICAL );
                 mRecyclerView.setLayoutManager( layoutManager );

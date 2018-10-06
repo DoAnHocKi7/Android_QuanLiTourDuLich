@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void khoiTaoGioHang() {
-        if (MainActivity.gioHang.size() < 0) {
+        if (MainActivity.gioHang==null) {
             MainActivity.gioHang = new ArrayList<>();
         }
     }

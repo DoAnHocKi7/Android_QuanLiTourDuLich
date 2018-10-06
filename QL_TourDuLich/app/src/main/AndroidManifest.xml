@@ -16,6 +16,7 @@
         <activity android:name=".View.DangNhap.LoginActivity" />
         <activity android:name=".View.DangKy.SignUpActivity" />
         <activity android:name=".View.MainActivity">
+
         </activity>
 
         <activity android:name=".View.ChiTietTour.ChiTietTourActivity">

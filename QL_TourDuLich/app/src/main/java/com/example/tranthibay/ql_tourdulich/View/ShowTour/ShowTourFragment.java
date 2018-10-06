@@ -1,5 +1,6 @@
 package com.example.tranthibay.ql_tourdulich.View.ShowTour;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -32,9 +33,14 @@ public class ShowTourFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate( R.layout.fragment_show_tour, container, false );
-        mRecyclerView = (RecyclerView) view.findViewById( R.id.recycle_ShowTour );
         data = new ArrayList<>();
+        anhXa( view );
+        loadTours( view.getContext() );
 
+        return view;
+    }
+
+    private void loadTours(Context context) {
         TourLogicPresenter logicPresenter = new TourLogicPresenter( this.getContext() );
         logicPresenter.getTourDulich( new VolleyCallback() {
             @Override
@@ -56,15 +62,17 @@ public class ShowTourFragment extends Fragment {
                         e.printStackTrace();
                     }
                 }
-                //sdfghjk
-                TourRecyclerViewAdapter mRcvAdapter = new TourRecyclerViewAdapter( data, view.getContext() );
-                GridLayoutManager layoutManager = new GridLayoutManager( view.getContext(), 2 );
+                TourRecyclerViewAdapter mRcvAdapter = new TourRecyclerViewAdapter( data, context );
+                GridLayoutManager layoutManager = new GridLayoutManager( context, 2 );
                 layoutManager.setOrientation( LinearLayoutManager.VERTICAL );
                 mRecyclerView.setLayoutManager( layoutManager );
                 mRecyclerView.setAdapter( mRcvAdapter );
             }
         } );
+    }
 
-        return view;
+    private void anhXa(View view) {
+        mRecyclerView = (RecyclerView) view.findViewById( R.id.recycle_ShowTour );
+
     }
 }

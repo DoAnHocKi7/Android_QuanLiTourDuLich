@@ -57,7 +57,6 @@ public class TourRecyclerViewAdapter extends RecyclerView.Adapter<TourRecyclerVi
         TextView tv_GiaTour;
         ImageView img_Tour;
 
-
         public RecyclerViewHolder(View itemView) {
             super( itemView );
             tv_TenTour = (TextView) itemView.findViewById( R.id.tv_TenTour );

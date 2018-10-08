@@ -53,22 +53,42 @@ public class TourModel implements Serializable {
         this.loaiTour = loaiTour;
     }
 
+    public String getDiaDiem() {
+        return diaDiem;
+    }
+
+    public void setDiaDiem(String diaDiem) {
+        this.diaDiem = diaDiem;
+    }
+
     private String tenTour;
     private String hinhAnh;
     private double gia;
     private String loaiTour;
     private String mota;
     private String maTour;
+    private String diaDiem;
+    private KhachSanModel khachSan;
+
+    public KhachSanModel getKhachSan() {
+        return khachSan;
+    }
+
+    public void setKhachSan(KhachSanModel khachSan) {
+        this.khachSan = khachSan;
+    }
 
     public TourModel() {
     }
 
-    public TourModel(String maTour, String tenTour, String hinhAnh, double gia, String loaiTour, String mota) {
+    public TourModel(String maTour, String tenTour, String hinhAnh, double gia, String loaiTour, String mota, String diaDiem, KhachSanModel ks) {
         this.maTour = maTour;
         this.tenTour = tenTour;
         this.hinhAnh = hinhAnh;
         this.gia = gia;
         this.loaiTour = loaiTour;
         this.mota = mota;
+        this.diaDiem = diaDiem;
+        this.khachSan = ks;
     }
 }

@@ -39,7 +39,7 @@
                     android:weightSum="5">
 
                     <ImageView
-                        android:id="@+id/imageView3"
+                        android:id="@+id/chi_tiet_tour_imgTour"
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
                         android:layout_gravity="center"
@@ -47,7 +47,7 @@
                         android:src="@drawable/ho_guom" />
 
                     <TextView
-                        android:id="@+id/chi_tiet_tour_tv_NoiDen"
+                        android:id="@+id/chi_tiet_tour_tv_DiaDiem"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
@@ -77,6 +77,7 @@
                         android:orientation="horizontal">
 
                         <Button
+                            android:id="@+id/chi_tiet_tour_btn_DatTour"
                             android:layout_width="150dp"
                             android:layout_height="40dp"
                             android:layout_gravity="center"
@@ -102,14 +103,14 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView5"
+                        android:id="@+id/chi_tiet_tour_tv_TenTour"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="Chuyến đi Tour Đà Nẵng" />
 
                     <TextView
-                        android:id="@+id/textView8"
+                        android:id="@+id/chi_tiet_tour_tv_TenDiaDiem"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -139,14 +140,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="4"
-                            android:text="Đặc Tính : " />
+                            android:text="Khách sạn:" />
 
                         <TextView
-                            android:id="@+id/tv_ttt"
+                            android:id="@+id/chi_tiet_tour_tv_KhachSan"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="2"
-                            android:text="Tour đi nhiều nơi" />
+                            android:layout_weight="2" />
 
                     </LinearLayout>
 
@@ -163,14 +163,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="4"
-                            android:text="Giao hàng : " />
+                            android:text="Giá tiền:" />
 
                         <TextView
-                            android:id="@+id/textVie1w9"
+                            android:id="@+id/chi_tiet_tour_tv_GiaKhachSan"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="2"
-                            android:text="Tour đi nhiều nơi" />
+                            android:layout_weight="2" />
 
                     </LinearLayout>
 
@@ -187,14 +186,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="4"
-                            android:text="Dịch vụ: " />
+                            android:text="Địa chỉ:" />
 
                         <TextView
-                            android:id="@+id/textVie1w81"
+                            android:id="@+id/chi_tiet_tour_tv_DiaChiKS"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="2"
-                            android:text="Tour đi nhiều nơi" />
+                            android:layout_weight="2" />
 
                     </LinearLayout>
 
@@ -211,6 +209,7 @@
                 android:background="@drawable/border_blue">
 
                 <TextView
+                    android:id="@+id/chi_tiet_tour_tv_MoTa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Tại Việt Nam hiện nay br , nhu cầu về giải trí vô cùng lớn, đặc biệt là trong lĩnh vực du lịch. Trong đó viêc đặt tour du lịch online có tiềm năng rất lớn và đáp ứng được nhu cầu của khách hàng tốt hơn. Do đó nhóm chúng tôi thiết kế Website quản lý Tour du lịch cho SaigonTourist.

@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.example.tranthibay.ql_tourdulich.Adapter.TourRecyclerViewAdapter;
 import com.example.tranthibay.ql_tourdulich.Constants.PHPConnectionConstants;
+import com.example.tranthibay.ql_tourdulich.Model.ShowTour.KhachSanModel;
 import com.example.tranthibay.ql_tourdulich.Model.ShowTour.TourModel;
 import com.example.tranthibay.ql_tourdulich.Presenter.ShowTour.TourLogicPresenter;
 import com.example.tranthibay.ql_tourdulich.R;
@@ -46,6 +47,7 @@ public class ShowTourFragment extends Fragment {
             @Override
             public void onSuccess(JSONArray result) {
                 TourModel tour = null;
+                KhachSanModel khachSan = null;
                 for (int i = 0; i < result.length(); i++) {
                     try {
                         JSONObject item = result.getJSONObject( i );
@@ -55,7 +57,14 @@ public class ShowTourFragment extends Fragment {
                         Double gia = item.getDouble( "Gia" );
                         String loai = item.getString( "LoaiTour" );
                         String mota = item.getString( "MoTa" );
-                        tour = new TourModel( ma, ten, img, gia, loai, mota );
+                        String diaDiem = item.getString( "TenDiaDiem" );
+                        String tenks = item.getString( "tenks" );
+                        String maKS = item.getString( "MaKS" );
+                        String diaChi = item.getString( "diachi" );
+                        double tienKS = Double.valueOf( item.getString( "giatien" ) );
+                        String loaiKS = item.getString( "MaLoaiKS" );
+                        khachSan = new KhachSanModel( tenks, diaChi, tienKS, loaiKS );
+                        tour = new TourModel( ma, ten, img, gia, loai, mota, diaDiem, khachSan );
                         data.add( tour );
 
                     } catch (JSONException e) {

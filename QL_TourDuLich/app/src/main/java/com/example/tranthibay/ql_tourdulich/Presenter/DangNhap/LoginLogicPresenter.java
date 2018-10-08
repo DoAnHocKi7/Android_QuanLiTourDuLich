@@ -10,7 +10,6 @@ import com.example.tranthibay.ql_tourdulich.Model.DangNhap.LoginModel;
 import com.example.tranthibay.ql_tourdulich.Services.TaiKhoanServices;
 import com.example.tranthibay.ql_tourdulich.Services.VolleyCallback;
 import com.example.tranthibay.ql_tourdulich.View.DangNhap.LoginView;
-import com.example.tranthibay.ql_tourdulich.View.ShowTour.TourActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;

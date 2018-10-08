@@ -13,15 +13,18 @@
         android:roundIcon="@mipmap/icon_main"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".View.DangNhap.LoginActivity">
+        <activity android:name=".View.DangNhap.LoginActivity" />
+        <activity android:name=".View.DangKy.SignUpActivity" />
+        <activity android:name=".View.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".View.ShowTour.TourActivity"></activity>
-        <activity android:name=".View.DangKy.SignUpActivity"></activity>
+
+        <activity android:name=".View.ChiTietTour.ChiTietTourActivity">
+        </activity>
     </application>
 
 </manifest>

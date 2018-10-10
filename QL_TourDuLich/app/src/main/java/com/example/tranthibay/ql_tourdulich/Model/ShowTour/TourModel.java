@@ -2,8 +2,10 @@ package com.example.tranthibay.ql_tourdulich.Model.ShowTour;
 
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class TourModel implements Serializable {
+
     public String getMota() {
         return mota;
     }
@@ -11,7 +13,6 @@ public class TourModel implements Serializable {
     public void setMota(String mota) {
         this.mota = mota;
     }
-
 
     public String getMaTour() {
         return maTour;
@@ -61,6 +62,24 @@ public class TourModel implements Serializable {
         this.diaDiem = diaDiem;
     }
 
+    public Date getNgayDi() {
+        return ngayDi;
+    }
+
+    public void setNgayDi(Date ngayDi) {
+        this.ngayDi = ngayDi;
+    }
+
+    public Date getNgayDen() {
+        return ngayDen;
+    }
+
+    public void setNgayDen(Date ngayDen) {
+        this.ngayDen = ngayDen;
+    }
+
+    private Date ngayDi;
+    private Date ngayDen;
     private String tenTour;
     private String hinhAnh;
     private double gia;
@@ -81,7 +100,9 @@ public class TourModel implements Serializable {
     public TourModel() {
     }
 
-    public TourModel(String maTour, String tenTour, String hinhAnh, double gia, String loaiTour, String mota, String diaDiem, KhachSanModel ks) {
+    public TourModel(Date ngayDi, Date ngayDen, String maTour, String tenTour, String hinhAnh, double gia, String loaiTour, String mota, String diaDiem, KhachSanModel ks) {
+        this.ngayDi = ngayDi;
+        this.ngayDen = ngayDen;
         this.maTour = maTour;
         this.tenTour = tenTour;
         this.hinhAnh = hinhAnh;

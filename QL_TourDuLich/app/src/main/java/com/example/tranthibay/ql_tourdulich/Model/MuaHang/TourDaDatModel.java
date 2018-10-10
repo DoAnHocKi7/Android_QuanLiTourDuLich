@@ -2,9 +2,10 @@ package com.example.tranthibay.ql_tourdulich.Model.MuaHang;
 
 import com.example.tranthibay.ql_tourdulich.Model.ShowTour.TourModel;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TourDaDatModel {
+public class TourDaDatModel implements Serializable{
     private int soNguoi;
     private Date ngayDat;
     private double tongTien;

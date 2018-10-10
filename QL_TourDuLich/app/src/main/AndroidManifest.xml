@@ -22,8 +22,10 @@
             </intent-filter>
 
         </activity>
-
-        <activity android:name=".View.ChiTietTour.ChiTietTourActivity">
+        <activity android:name=".View.ChiTietTour.ChiTietTourActivity" />
+        <activity android:name=".View.GioHang.GioHangActivity">
+        </activity>
+        <activity android:name=".View.MuaHang.MuaHangActivity">
         </activity>
     </application>
 

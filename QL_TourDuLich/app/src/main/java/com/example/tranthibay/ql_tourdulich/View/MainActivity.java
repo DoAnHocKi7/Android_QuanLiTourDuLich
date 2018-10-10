@@ -17,7 +17,7 @@ import com.example.tranthibay.ql_tourdulich.View.ShowTour.ShowTourFragment;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    public static ArrayList<TourDaDatModel> gioHang;
+    public static ArrayList<TourDaDatModel> GioHang;
     private Fragment selectedFragment;
     private FragmentTransaction fragmentTransaction;
     private FragmentManager fragmentManager;
@@ -66,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void khoiTaoGioHang() {
-        if (MainActivity.gioHang==null) {
-            MainActivity.gioHang = new ArrayList<>();
+        if (MainActivity.GioHang ==null) {
+            MainActivity.GioHang = new ArrayList<>();
         }
     }
 }

@@ -8,6 +8,7 @@
     android:background="@drawable/border_yellow">
 
     <ImageView
+        android:id="@+id/gio_hang_row_img_TourDaDat"
         android:layout_width="80dp"
         android:layout_height="85dp"
         android:layout_weight="1"
@@ -48,7 +49,7 @@
                     android:id="@+id/btn_giam"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:background="#fcffbb"
+                    android:background="#fdffdd"
                     android:padding="5dp"
                     android:text="-"
                     android:textColor="#0717f7" />
@@ -68,7 +69,7 @@ android:textSize="20dp"
                     android:id="@+id/btn_tang"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:background="#fcffbb"
+                    android:background="#fdffdd"
                     android:layout_toRightOf="@id/tv_soluong"
                     android:padding="5dp"
                     android:text="+"
@@ -107,7 +108,7 @@ android:textSize="20dp"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_giatour"
+                    android:id="@+id/gio_hang_row_tv_GiaTour"
                     android:layout_width="116dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -115,6 +116,12 @@ android:textSize="20dp"
                     android:paddingRight="20dp"
                     android:text="3500000 đ"
                     android:textColor="#e6520e" />
+
+                <TextView
+                    android:id="@+id/gio_hang_row_tv_SLNguoi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView" />
 
                 <TextView
 
@@ -129,7 +136,7 @@ android:textSize="20dp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tv_tongien"
+                    android:id="@+id/gio_hang_row_tv_TongTien"
                     android:layout_width="115dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"

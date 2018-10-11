@@ -1,9 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".View.GioHang.GioHangActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/gio_hang_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:theme="?attr/actionBarDivider" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gio_hang_toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="3"
+                android:text="Danh sách các tour ddax mua:" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/gio_hang_recycle_view_gio_hang"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="3" />
+
+            <!--//MÔ TẢ TOUR-->
+
+            <!--//TOUR LIÊN QUAN-->
+
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

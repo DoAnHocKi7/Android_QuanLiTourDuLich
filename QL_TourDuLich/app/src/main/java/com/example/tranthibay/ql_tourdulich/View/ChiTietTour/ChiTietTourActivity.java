@@ -12,14 +12,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tranthibay.ql_tourdulich.Constants.TourConstants;
-import com.example.tranthibay.ql_tourdulich.Model.MuaHang.TourDaDatModel;
+import com.example.tranthibay.ql_tourdulich.Model.MuaHang.TourDaChonModel;
 import com.example.tranthibay.ql_tourdulich.Model.ShowTour.TourModel;
 import com.example.tranthibay.ql_tourdulich.Presenter.ChiTietTour.ChiTietTourLogicPresenter;
 import com.example.tranthibay.ql_tourdulich.R;
+import com.example.tranthibay.ql_tourdulich.View.GioHang.GioHangActivity;
 import com.example.tranthibay.ql_tourdulich.View.MainActivity;
 import com.example.tranthibay.ql_tourdulich.View.MuaHang.MuaHangActivity;
 import com.squareup.picasso.Picasso;
@@ -28,6 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ChiTietTourActivity extends AppCompatActivity implements ChiTietTourView {
+    /*-------------Show Tour---------------*/
     private Toolbar toolbar;
     private TourModel tour;
     private TextView tv_diaDiem;
@@ -39,6 +42,9 @@ public class ChiTietTourActivity extends AppCompatActivity implements ChiTietTou
     private TextView tv_GiaKS;
     private TextView tv_diaChi;
     private TextView tv_dChiKS;
+    /*-------------------------*/
+
+
 
     private EditText edt_setSL;
     private Dialog dialog_setSL;
@@ -111,8 +117,14 @@ public class ChiTietTourActivity extends AppCompatActivity implements ChiTietTou
                 onBackPressed();
             }
             break;
-            case R.id.fragment_chit_tiet_tour_item_giohang: {
-
+            case R.id.tool_bar_item_gio_hang: {
+                Intent intent = new Intent( this, GioHangActivity.class );
+                startActivity( intent );
+            }
+            break;
+            case R.id.tool_bar_item_home: {
+                Intent intent = new Intent( this, MainActivity.class );
+                startActivity( intent );
             }
             break;
         }
@@ -127,7 +139,7 @@ public class ChiTietTourActivity extends AppCompatActivity implements ChiTietTou
                 dialog_setSL = new Dialog( ChiTietTourActivity.this );
                 dialog_setSL.setContentView( R.layout.pop_up_set_so_luong );
                 dialog_setSL.show();
-                btn_setSL = (Button)dialog_setSL.findViewById( R.id.chi_tiet_tour_pop_up_btn_SetSL );
+                btn_setSL = (Button) dialog_setSL.findViewById( R.id.chi_tiet_tour_pop_up_btn_SetSL );
                 edt_setSL = (EditText) dialog_setSL.findViewById( R.id.chi_tiet_tour_pop_up_edt_SetSL );
                 btn_setSL.setOnClickListener( new View.OnClickListener() {
                     @Override
@@ -138,7 +150,7 @@ public class ChiTietTourActivity extends AppCompatActivity implements ChiTietTou
                         int soNguoi = Integer.valueOf( edt_setSL.getText().toString() );
                         double tongTien = soNguoi * tour.getGia();
                         ChiTietTourLogicPresenter chiTietTourLogicPresenter = new ChiTietTourLogicPresenter( ChiTietTourActivity.this );
-                        chiTietTourLogicPresenter.themTourVaoGio( new TourDaDatModel( soNguoi, ngayDat, tongTien, tour ) );
+                        chiTietTourLogicPresenter.themTourVaoGio( new TourDaChonModel( soNguoi, ngayDat, tongTien, tour ) );
 
                     }
                 } );
@@ -162,6 +174,6 @@ public class ChiTietTourActivity extends AppCompatActivity implements ChiTietTou
         Toast.makeText( this, "Thêm vào giỏ hàng thành công", Toast.LENGTH_SHORT ).show();
         Intent intent = new Intent( this, MainActivity.class );
         startActivity( intent );
-        Object a=MainActivity.GioHang;
+        Object a = MainActivity.GioHang;
     }
 }

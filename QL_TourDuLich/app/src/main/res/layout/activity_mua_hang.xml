@@ -13,16 +13,14 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mua_hang_toolbar">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="20dp">
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -290,7 +288,7 @@
                         android:weightSum="5">
 
                         <EditText
-                            android:id="@+id/dangky_edt_Ho"
+                            android:id="@+id/mua_hang_edt_Ho"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
@@ -299,7 +297,7 @@
                             android:inputType="textPersonName" />
 
                         <EditText
-                            android:id="@+id/dangky_edt_Ten"
+                            android:id="@+id/mua_hang_edt_Ten"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="3"
@@ -315,7 +313,7 @@
                         android:orientation="horizontal">
 
                         <EditText
-                            android:id="@+id/dangky_edt_sdt"
+                            android:id="@+id/mua_hang_edt_sdt"
 
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -325,7 +323,7 @@
                             android:inputType="phone" />
 
                         <EditText
-                            android:id="@+id/dangky_edt_email"
+                            android:id="@+id/mua_hang_edt_email"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -341,7 +339,7 @@
                         android:orientation="horizontal">
 
                         <EditText
-                            android:id="@+id/dangky_edt_DiaChi"
+                            android:id="@+id/mua_hang_edt_DiaChi"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -357,13 +355,13 @@
                         android:orientation="horizontal">
 
                         <RadioGroup
-                            android:id="@+id/dangky_grRado_gioiTinh"
+                            android:id="@+id/mua_hang_grRado_gioiTinh"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
                             <RadioButton
-                                android:id="@+id/dangnhap_rdo_Nam"
+                                android:id="@+id/mua_hang_rdo_Nam"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -371,7 +369,7 @@
                                 android:text="Nam" />
 
                             <RadioButton
-                                android:id="@+id/dangnhap_rdo_Nu"
+                                android:id="@+id/mua_hang_rdo_Nu"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"

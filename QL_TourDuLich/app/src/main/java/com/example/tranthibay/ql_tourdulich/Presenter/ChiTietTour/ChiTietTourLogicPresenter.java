@@ -1,8 +1,6 @@
 package com.example.tranthibay.ql_tourdulich.Presenter.ChiTietTour;
 
-import android.content.Context;
-
-import com.example.tranthibay.ql_tourdulich.Model.MuaHang.TourDaDatModel;
+import com.example.tranthibay.ql_tourdulich.Model.MuaHang.TourDaChonModel;
 import com.example.tranthibay.ql_tourdulich.Model.ShowTour.TourModel;
 import com.example.tranthibay.ql_tourdulich.View.ChiTietTour.ChiTietTourView;
 import com.example.tranthibay.ql_tourdulich.View.MainActivity;
@@ -16,12 +14,12 @@ public class ChiTietTourLogicPresenter implements ChiTietTourImplementPresenter 
     ChiTietTourView chiTietTourView;
 
     @Override
-    public void themTourVaoGio(TourDaDatModel model) {
+    public void themTourVaoGio(TourDaChonModel model) {
         String maTour = model.getTourModel().getMaTour();
         if (!kiemTraTourDaDat( maTour )) {
             MainActivity.GioHang.add( model );
         } else {
-            for (TourDaDatModel tour : MainActivity.GioHang) {
+            for (TourDaChonModel tour : MainActivity.GioHang) {
                 if (tour.getTourModel().getMaTour().equals( maTour )) {
                     tour.setSoNguoi( tour.getSoNguoi()+ model.getSoNguoi() );
                     break;
@@ -33,7 +31,7 @@ public class ChiTietTourLogicPresenter implements ChiTietTourImplementPresenter 
 
     @Override
     public boolean kiemTraTourDaDat(String maTour) {
-        for (TourDaDatModel tourDaDat : MainActivity.GioHang) {
+        for (TourDaChonModel tourDaDat : MainActivity.GioHang) {
             if (tourDaDat.getTourModel().getMaTour().equals( maTour )) {
                 return true;
             }

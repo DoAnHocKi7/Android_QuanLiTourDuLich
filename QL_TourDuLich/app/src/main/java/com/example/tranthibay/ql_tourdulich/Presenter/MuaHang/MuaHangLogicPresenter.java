@@ -39,6 +39,8 @@ public class MuaHangLogicPresenter implements MuaHangImplementPresenter {
         StringRequest request = new StringRequest( Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+//chuyen ra man hinh ma dat hang
+                muaHangView.datTourNgayThanhCong( response );
                 Log.e( "Response", "Successful!" );
             }
         }, new Response.ErrorListener() {
@@ -50,14 +52,16 @@ public class MuaHangLogicPresenter implements MuaHangImplementPresenter {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-//                params.put( "MaKH", khachHangModel.getMaKH() );
-//                params.put("TenKH",khachHangModel.getTenKH());
-//                params.put("DiaChiKH",khachHangModel.getDiaChi());
-                //params.put( "EmailKH",khachHangModel.getEmail() );
-
-                params.put( "A", "123" );
-//                params.put( "SdtKH",khachHangModel.getSdt() );
-//                params.put( "GTinhKH",khachHangModel.getGioiTinh() );
+                params.put( "TenKH", khachHangModel.getTenKH() );
+                params.put( "DiaChiKH", khachHangModel.getDiaChi() );
+                params.put( "EmailKH", khachHangModel.getEmail() );
+                params.put( "NgayDH", model.getNgayDat().toString() );
+                params.put( "SdtKH", khachHangModel.getSdt() );
+                params.put( "GTinhKH", khachHangModel.getGioiTinh() );
+                params.put( "TongSoNguoi", String.valueOf( model.getSoNguoi() ) );
+                params.put( "SoNguoi", String.valueOf( model.getSoNguoi() ) );
+                params.put( "MaTour", model.getTourModel().getMaTour() );
+                //params.put( "MaKS",model.getTourModel().getKhachSan(). )
                 return params;
             }
         };

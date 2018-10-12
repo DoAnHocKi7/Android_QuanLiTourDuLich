@@ -2,6 +2,7 @@ package com.example.tranthibay.ql_tourdulich.View.MuaHang;
 
 import android.content.Intent;
 import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -23,6 +24,7 @@ import com.example.tranthibay.ql_tourdulich.R;
 import com.example.tranthibay.ql_tourdulich.View.GioHang.GioHangActivity;
 import com.example.tranthibay.ql_tourdulich.View.MainActivity;
 
+import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
 public class MuaHangActivity extends AppCompatActivity implements MuaHangView {
@@ -132,8 +134,12 @@ public class MuaHangActivity extends AppCompatActivity implements MuaHangView {
         btn_DatTourNgay.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                layThongTinKhachHang();
                 MuaHangLogicPresenter logicPresenter = new MuaHangLogicPresenter( MuaHangActivity.this, MuaHangActivity.this );
-                logicPresenter.thanhToanNgayMotTour( new TourDaChonModel(), new KhachHangModel() );
+                int soNguoi = Integer.valueOf( edt_soNguoi.getText().toString() );
+                double tongTien = soNguoi * tour.getGia();
+                TourDaChonModel daChonModel = new TourDaChonModel( soNguoi, Calendar.getInstance().getTime(), tongTien, tour );
+                logicPresenter.thanhToanNgayMotTour( daChonModel, khachHangModel );
             }
         } );
     }
@@ -141,11 +147,23 @@ public class MuaHangActivity extends AppCompatActivity implements MuaHangView {
     private void layThongTinKhachHang() {
         int checkedID = rdoGroup_gTinhKH.getCheckedRadioButtonId();
         RadioButton rdo_GioiTinh = (RadioButton) findViewById( checkedID );
-        this.khachHangModel=new KhachHangModel()
+        String tenKH = edt_hoKH.getText().toString() + edt_tenKH.getText().toString();
+        String diaChiKH = edt_diaChiKH.getText().toString();
+        String emailKH = edt_emailKH.getText().toString();
+        String sdtKH = edt_sdtKH.getText().toString();
+        if (!(tenKH.isEmpty() || diaChiKH.isEmpty() || emailKH.isEmpty() || sdtKH.isEmpty())) {
+            this.khachHangModel = new KhachHangModel( "", TourConstants.LOAIKHMACDINH, tenKH,
+                    rdo_GioiTinh.getText().toString(), emailKH, sdtKH, diaChiKH );
+        }
+
     }
 
     @Override
-    public void datTourNgayThanhCong() {
-
+    public void datTourNgayThanhCong(String maMuaHang) {
+        AlertDialog.Builder builder=new AlertDialog.Builder( this );
+        builder.setTitle( "Đặt hàng thành công!" );
+        builder.setMessage( "Hãy nhớ mã mua hàng của bạn: "+maMuaHang );
+        AlertDialog alertDialog=builder.create();
+        alertDialog.show();
     }
 }

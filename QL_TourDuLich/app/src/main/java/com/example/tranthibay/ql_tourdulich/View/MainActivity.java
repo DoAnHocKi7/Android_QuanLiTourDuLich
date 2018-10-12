@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView( R.layout.activity_main );
         caiDatBottomNavgation();
         khoiTaoGioHang();
+
+
     }
 
     private void caiDatBottomNavgation() {
@@ -66,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void khoiTaoGioHang() {
-        if (MainActivity.GioHang ==null) {
+        if (MainActivity.GioHang == null) {
             MainActivity.GioHang = new ArrayList<>();
         }
     }

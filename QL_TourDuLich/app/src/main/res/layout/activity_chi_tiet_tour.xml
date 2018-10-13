@@ -1,25 +1,26 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".View.ChiTietTour.ChiTietTourActivity">
-    <android.support.v7.widget.Toolbar
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:theme="?attr/actionBarDivider"
-        android:id="@+id/fragment_chit_tiet_tour_toolbar"
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/chi_tiet_tour_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="56dp"/>
+        android:layout_height="56dp"
+        android:theme="?attr/actionBarDivider" />
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/fragment_chit_tiet_tour_toolbar">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chi_tiet_tour_toolbar">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="20dp">
-
 
 
             <LinearLayout
@@ -53,8 +54,8 @@
                         android:layout_marginTop="15dp"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:textColor="#f7000000"
                         android:text="Tour Du lịch Đà Nẵng"
+                        android:textColor="#f7000000"
                         android:textSize="15dp"
                         android:textStyle="bold" />
 
@@ -77,20 +78,81 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/chi_tiet_tour_btn_DatTour"
-                            android:layout_width="150dp"
+                            android:id="@+id/chi_tiet_tour_btn_DatTour_ngay"
+                            android:layout_width="123dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="30dp"
+                            android:background="#6797ff"
+                            android:text="Đặt tour ngay"
+                            android:textAllCaps="false"
+                            android:textColor="#ffffff"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <Button
+                            android:id="@+id/chi_tiet_tour_btn_ThemVaoGio"
+                            android:layout_width="123dp"
                             android:layout_height="40dp"
                             android:layout_gravity="center"
                             android:layout_marginEnd="8dp"
                             android:layout_marginStart="8dp"
                             android:background="#6797ff"
-                            android:text="Đặt tour"
+                            android:text="Thêm vào giỏ"
                             android:textAllCaps="false"
                             android:textColor="#ffffff"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent" />
+                            app:layout_constraintStart_toEndOf="@+id/chi_tiet_tour_btn_DatTour_ngay" />
 
                     </android.support.constraint.ConstraintLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="0"
+                    android:background="@drawable/border_yellow"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="4">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="Ngày đi" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="3"
+                            android:text="1/1/2018" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="4">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="Ngày về:" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:text="1/2/2018" />
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -255,7 +317,7 @@ Nhằm phục vụ khách hàng được tốt hơn và thu hút khách hàng nh
                             android:layout_height="20dp"
                             android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:text=" Tour Đà Nẵng"/>
+                            android:text=" Tour Đà Nẵng" />
 
                     </LinearLayout>
 
@@ -278,7 +340,7 @@ Nhằm phục vụ khách hàng được tốt hơn và thu hút khách hàng nh
                             android:layout_height="20dp"
                             android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:text=" Tour Đà Nẵng"/>
+                            android:text=" Tour Đà Nẵng" />
 
                     </LinearLayout>
 

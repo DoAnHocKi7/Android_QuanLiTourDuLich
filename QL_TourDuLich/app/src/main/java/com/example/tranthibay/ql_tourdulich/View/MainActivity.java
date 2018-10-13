@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.tranthibay.ql_tourdulich.Model.MuaHang.TourDaDatModel;
+import com.example.tranthibay.ql_tourdulich.Model.MuaHang.TourDaChonModel;
 import com.example.tranthibay.ql_tourdulich.R;
 import com.example.tranthibay.ql_tourdulich.View.Fragment2.Fragment2;
 import com.example.tranthibay.ql_tourdulich.View.ShowTour.ShowTourFragment;
@@ -17,7 +17,7 @@ import com.example.tranthibay.ql_tourdulich.View.ShowTour.ShowTourFragment;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    public static ArrayList<TourDaDatModel> gioHang;
+    public static ArrayList<TourDaChonModel> GioHang;
     private Fragment selectedFragment;
     private FragmentTransaction fragmentTransaction;
     private FragmentManager fragmentManager;
@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView( R.layout.activity_main );
         caiDatBottomNavgation();
         khoiTaoGioHang();
+
+
     }
 
     private void caiDatBottomNavgation() {
@@ -66,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void khoiTaoGioHang() {
-        if (MainActivity.gioHang==null) {
-            MainActivity.gioHang = new ArrayList<>();
+        if (MainActivity.GioHang == null) {
+            MainActivity.GioHang = new ArrayList<>();
         }
     }
 }

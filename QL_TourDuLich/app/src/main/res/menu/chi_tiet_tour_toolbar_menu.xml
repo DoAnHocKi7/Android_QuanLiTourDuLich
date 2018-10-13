@@ -2,13 +2,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android2:id="@+id/fragment_chit_tiet_tour_item_home"
+        android2:id="@+id/tool_bar_item_home"
         android2:icon="@drawable/home_toolbar"
         app:showAsAction="ifRoom"
         android2:title="item"
         android2:iconTint="#018cfd"/>
     <item
-        android2:id="@+id/fragment_chit_tiet_tour_item_giohang"
+        android2:id="@+id/tool_bar_item_gio_hang"
         android2:icon="@drawable/shopping_cart"
         android2:title="item"
         app:showAsAction="ifRoom" />

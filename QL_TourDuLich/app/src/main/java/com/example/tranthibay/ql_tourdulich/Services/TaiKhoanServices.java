@@ -33,6 +33,10 @@ public class TaiKhoanServices {
     public boolean isExist;
     public TaiKhoanServices(Context context) {
         this.isExist=false;
+
+
+
+
         this.context = context;
         this.requestQueue = Volley.newRequestQueue(this.context);
         this.loginModels = new ArrayList<>();

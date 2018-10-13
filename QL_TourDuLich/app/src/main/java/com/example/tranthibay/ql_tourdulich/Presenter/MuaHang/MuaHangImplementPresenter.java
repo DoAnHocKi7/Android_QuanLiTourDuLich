@@ -1,8 +1,8 @@
 package com.example.tranthibay.ql_tourdulich.Presenter.MuaHang;
 
-import com.example.tranthibay.ql_tourdulich.Model.MuaHang.TourDaDatModel;
+import com.example.tranthibay.ql_tourdulich.Model.MuaHang.KhachHangModel;
+import com.example.tranthibay.ql_tourdulich.Model.MuaHang.TourDaChonModel;
 
 public interface MuaHangImplementPresenter {
-    void themTourVaoGio(TourDaDatModel model);
-    boolean kiemTraTourDaDat(String maTour);
+    void thanhToanNgayMotTour(TourDaChonModel model, KhachHangModel khachHangModel);
 }

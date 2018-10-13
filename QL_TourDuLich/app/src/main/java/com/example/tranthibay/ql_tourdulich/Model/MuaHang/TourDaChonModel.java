@@ -2,19 +2,24 @@ package com.example.tranthibay.ql_tourdulich.Model.MuaHang;
 
 import com.example.tranthibay.ql_tourdulich.Model.ShowTour.TourModel;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TourDaDatModel {
+public class TourDaChonModel implements Serializable{
     private int soNguoi;
     private Date ngayDat;
     private double tongTien;
     private TourModel tourModel;
 
-    public TourDaDatModel(int soNguoi, Date ngayDat, double tongTien, TourModel tourModel) {
+    public TourDaChonModel(int soNguoi, Date ngayDat, double tongTien, TourModel tourModel) {
         this.soNguoi = soNguoi;
         this.ngayDat = ngayDat;
         this.tongTien = tongTien;
         this.tourModel = tourModel;
+    }
+
+    public TourDaChonModel() {
+
     }
 
     public TourModel getTourModel() {
@@ -49,6 +54,5 @@ public class TourDaDatModel {
     public void setTongTien(double tongTien) {
         this.tongTien = tongTien;
     }
-
 
 }

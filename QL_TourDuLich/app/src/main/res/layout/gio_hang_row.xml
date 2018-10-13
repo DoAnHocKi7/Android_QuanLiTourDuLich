@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:orientation="horizontal"
+    android:padding="5dp"
+    android:weightSum="5"
+    android:background="@drawable/border_yellow">
+
+    <ImageView
+        android:id="@+id/gio_hang_row_img_TourDaDat"
+        android:layout_width="80dp"
+        android:layout_height="85dp"
+        android:layout_weight="1"
+        android:src="@mipmap/ic_launcher" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:orientation="horizontal"
+        android:weightSum="6">
+
+        <LinearLayout
+            android:layout_width="166dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="4"
+            android:orientation="vertical"
+            android:paddingLeft="5dp">
+
+            <TextView
+                android:layout_width="196dp"
+                android:layout_height="wrap_content"
+                android:text="Tour Đà Nẵng"
+                android:textStyle="bold"
+
+                />
+
+            <RelativeLayout
+                android:layout_width="166dp"
+                android:layout_height="91dp"
+                android:layout_marginTop="2dp"
+
+                android:paddingLeft="5dp">
+
+                <Button
+                    android:id="@+id/btn_giam"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:background="#fdffdd"
+                    android:padding="5dp"
+                    android:text="-"
+                    android:textColor="#0717f7" />
+
+                <TextView
+                    android:id="@+id/tv_soluong"
+                    android:layout_width="31dp"
+                    android:layout_height="37dp"
+android:textSize="20dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_toRightOf="@id/btn_giam"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="1" />
+
+                <Button
+                    android:id="@+id/btn_tang"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:background="#fdffdd"
+                    android:layout_toRightOf="@id/tv_soluong"
+                    android:padding="5dp"
+                    android:text="+"
+                    android:textColor="#0717f7"
+
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_alignParentBottom="true"
+
+
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="13dp"
+                    android:src="@drawable/trash" />
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="2"
+
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/gio_hang_row_tv_GiaTour"
+                    android:layout_width="116dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="13dp"
+                    android:paddingRight="20dp"
+                    android:text="3500000 đ"
+                    android:textColor="#e6520e" />
+
+                <TextView
+                    android:id="@+id/gio_hang_row_tv_SLNguoi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView" />
+
+                <TextView
+
+                    android:id="@+id/tv_tittle"
+                    android:layout_width="116dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="13dp"
+                    android:layout_marginTop="5dp"
+                    android:paddingRight="20dp"
+                    android:text="Thành tiền:"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/gio_hang_row_tv_ThanhTien"
+                    android:layout_width="115dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="120000" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

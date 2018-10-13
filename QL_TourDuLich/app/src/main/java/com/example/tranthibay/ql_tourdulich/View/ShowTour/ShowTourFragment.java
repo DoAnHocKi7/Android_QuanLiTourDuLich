@@ -24,7 +24,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ShowTourFragment extends Fragment {
     ArrayList<TourModel> data;
@@ -64,7 +67,13 @@ public class ShowTourFragment extends Fragment {
                         double tienKS = Double.valueOf( item.getString( "giatien" ) );
                         String loaiKS = item.getString( "MaLoaiKS" );
                         khachSan = new KhachSanModel( tenks, diaChi, tienKS, loaiKS );
-                        tour = new TourModel( ma, ten, img, gia, loai, mota, diaDiem, khachSan );
+                        try {
+                            Date ngayDi = new SimpleDateFormat( "yyyy-dd-MM" ).parse( item.getString( "ngaykhoihanh" ) );
+                            Date ngayDen = new SimpleDateFormat( "yyyy-dd-MM" ).parse( item.getString( "ngayketthuc" ) );
+                            tour = new TourModel( ngayDi, ngayDen, ma, ten, img, gia, loai, mota, diaDiem, khachSan );
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
                         data.add( tour );
 
                     } catch (JSONException e) {

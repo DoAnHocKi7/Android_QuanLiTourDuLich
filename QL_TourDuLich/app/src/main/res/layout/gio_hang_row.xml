@@ -132,11 +132,11 @@ android:textSize="20dp"
                     android:layout_marginRight="13dp"
                     android:layout_marginTop="5dp"
                     android:paddingRight="20dp"
-                    android:text="Tổng Tiền"
+                    android:text="Thành tiền:"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/gio_hang_row_tv_TongTien"
+                    android:id="@+id/gio_hang_row_tv_ThanhTien"
                     android:layout_width="115dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"

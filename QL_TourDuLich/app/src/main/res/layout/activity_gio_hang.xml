@@ -33,12 +33,66 @@
                 android:id="@+id/gio_hang_recycle_view_gio_hang"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="3" />
+                android:layout_weight="3" >
 
-            <!--//MÔ TẢ TOUR-->
+            </android.support.v7.widget.RecyclerView>
 
-            <!--//TOUR LIÊN QUAN-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Tổng tiền:" />
+
+                <TextView
+                    android:id="@+id/gio_hang_TongTien"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="30000000" />
+            </LinearLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/gio_hang_btn_ThanhToanLuon"
+                    android:layout_width="123dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="32dp"
+                    android:background="#6797ff"
+                    android:text="Thanh toán ngay"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="0dp" />
+
+                <Button
+                    android:id="@+id/gio_hang_btn_TiepTucMuaHang"
+                    android:layout_width="128dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:background="#6797ff"
+                    android:text="Tiếp tục mua hàng"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/gio_hang_btn_ThanhToanLuon" />
+
+            </android.support.constraint.ConstraintLayout>
 
         </LinearLayout>
     </ScrollView>

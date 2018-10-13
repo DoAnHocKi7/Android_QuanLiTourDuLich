@@ -18,15 +18,14 @@
         <activity android:name=".View.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".View.ChiTietTour.ChiTietTourActivity" />
-        <activity android:name=".View.GioHang.GioHangActivity">
-        </activity>
-        <activity android:name=".View.MuaHang.MuaHangActivity">
-        </activity>
+        <activity android:name=".View.GioHang.GioHangActivity"></activity>
+        <activity android:name=".View.MuaHang.MuaHangActivity"></activity>
+        <activity android:name=".View.ThanhToan.ThanhToanActivity"></activity>
     </application>
 
 </manifest>

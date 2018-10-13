@@ -57,7 +57,7 @@ public class TourDaDatReCyclerAdapter extends RecyclerView.Adapter<TourDaDatReCy
             super( itemView );
             tv_soNguoi=itemView.findViewById( R.id.gio_hang_row_tv_SLNguoi );
             img_tourDaDat=itemView.findViewById( R.id.gio_hang_row_img_TourDaDat );
-            tv_tongTienTourDaDat=itemView.findViewById( R.id.gio_hang_row_tv_TongTien );
+            tv_tongTienTourDaDat=itemView.findViewById( R.id.gio_hang_row_tv_ThanhTien );
             tv_giaTourDaDat=itemView.findViewById( R.id.gio_hang_row_tv_GiaTour );
         }
     }

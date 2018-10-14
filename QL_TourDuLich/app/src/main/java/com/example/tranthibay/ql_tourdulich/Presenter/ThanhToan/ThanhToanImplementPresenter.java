@@ -4,5 +4,5 @@ import com.example.tranthibay.ql_tourdulich.Model.MuaHang.KhachHangModel;
 
 public interface ThanhToanImplementPresenter {
     void thanhToanGioHang(KhachHangModel khachHangModel);
-
+    void xoaSPKhoiGioHang(String maTour);
 }

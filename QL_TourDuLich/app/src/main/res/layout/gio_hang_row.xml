@@ -46,7 +46,8 @@
                 android:paddingLeft="5dp">
 
                 <Button
-                    android:id="@+id/btn_giam"
+
+                    android:id="@+id/gio_hang_btn_TruNguoi"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:background="#fdffdd"
@@ -55,22 +56,22 @@
                     android:textColor="#0717f7" />
 
                 <TextView
-                    android:id="@+id/tv_soluong"
+                    android:id="@+id/gio_hang_row_tv_SLNguoi"
                     android:layout_width="31dp"
                     android:layout_height="37dp"
-android:textSize="20dp"
+                android:textSize="20dp"
                     android:layout_marginTop="7dp"
-                    android:layout_toRightOf="@id/btn_giam"
+                    android:layout_toRightOf="@id/gio_hang_btn_TruNguoi"
                     android:gravity="center"
                     android:textStyle="bold"
                     android:text="1" />
 
                 <Button
-                    android:id="@+id/btn_tang"
+                    android:id="@+id/gio_hang_btn_ThemNguoi"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:background="#fdffdd"
-                    android:layout_toRightOf="@id/tv_soluong"
+                    android:layout_toRightOf="@id/gio_hang_row_tv_SLNguoi"
                     android:padding="5dp"
                     android:text="+"
                     android:textColor="#0717f7"
@@ -78,11 +79,10 @@ android:textSize="20dp"
                     />
 
                 <ImageView
+                    android:id="@+id/gio_hang_img_XoaTour"
                     android:layout_width="wrap_content"
                     android:layout_height="25dp"
                     android:layout_alignParentBottom="true"
-
-
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="13dp"
                     android:src="@drawable/trash" />
@@ -117,13 +117,7 @@ android:textSize="20dp"
                     android:text="3500000 đ"
                     android:textColor="#e6520e" />
 
-                <TextView
-                    android:id="@+id/gio_hang_row_tv_SLNguoi"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
 
-                <TextView
 
                     android:id="@+id/tv_tittle"
                     android:layout_width="116dp"

@@ -27,11 +27,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ThanhToanLogicPresenter implements ThanhToanImplementPresenter {
-    ThanhToanView toanView;
+    ThanhToanView thanhToanView;
     Context context;
 
-    public ThanhToanLogicPresenter(ThanhToanView toanView, Context context) {
-        this.toanView = toanView;
+    public ThanhToanLogicPresenter(ThanhToanView thanhToanView, Context context) {
+        this.thanhToanView = thanhToanView;
         this.context = context;
     }
 
@@ -58,11 +58,15 @@ public class ThanhToanLogicPresenter implements ThanhToanImplementPresenter {
 
     private void themChiTietHopDong(String encodedJsonArrayString) {
         RequestQueue requestQueue = Volley.newRequestQueue( this.context );
-        String url = PHPConnectionConstants.HOST + "/TourDuLichAPI/ChiTietHopDong/insertChiTietTour.php";
+        String url = PHPConnectionConstants.HOST + "/TourDuLichAPI/GioHang/ThanhToanGioHang.php";
         StringRequest request = new StringRequest( Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-        //chuyen ra man hinh ma dat hang
+                if (response.equals( "ThanhCong" )) {
+                    thanhToanView.thanhToanGioHangThanhCong();
+                }else {
+                    thanhToanView.thanhToanGioHangThatBai();
+                }
                 Log.e( "Response", "Successful!" );
             }
         }, new Response.ErrorListener() {
@@ -158,5 +162,16 @@ public class ThanhToanLogicPresenter implements ThanhToanImplementPresenter {
             e.printStackTrace();
         }
         return obj;
+    }
+
+    @Override
+    public void xoaSPKhoiGioHang(String maTour) {
+        for (TourDaChonModel tour:MainActivity.GioHang) {
+            if(tour.getTourModel().getMaTour().equals( maTour )){
+                MainActivity.GioHang.remove( tour );
+                thanhToanView.xoaTourTrongGioThanhCong();
+                break;
+            }
+        }
     }
 }

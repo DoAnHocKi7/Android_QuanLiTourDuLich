@@ -56,4 +56,14 @@ public class ThanhToanActivity extends AppCompatActivity implements ThanhToanVie
     public void thanhToanGioHangThanhCong() {
 
     }
+
+    @Override
+    public void thanhToanGioHangThatBai() {
+
+    }
+
+    @Override
+    public void xoaTourTrongGioThanhCong() {
+
+    }
 }

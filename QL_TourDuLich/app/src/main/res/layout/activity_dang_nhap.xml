@@ -15,7 +15,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="218dp"
         android:ems="10"
-        android:hint="Tên đăng nhập"
+        android:hint="Số điện thoại hoặc email"
         android:inputType="textPersonName" />
 
     <EditText

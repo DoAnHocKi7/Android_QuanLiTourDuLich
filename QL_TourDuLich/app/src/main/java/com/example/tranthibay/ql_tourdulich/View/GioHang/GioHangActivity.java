@@ -57,7 +57,8 @@ public class GioHangActivity extends AppCompatActivity {
         btn_tiepTucMuaHang.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent=new Intent( GioHangActivity.this,MainActivity.class );
+                startActivity( intent );
             }
         } );
     }

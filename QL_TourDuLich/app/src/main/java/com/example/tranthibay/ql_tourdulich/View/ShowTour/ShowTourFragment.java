@@ -30,14 +30,16 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class ShowTourFragment extends Fragment {
-    ArrayList<TourModel> data;
-    RecyclerView mRecyclerView;
+    ArrayList<TourModel> dataTrongNuoc;
+    ArrayList<TourModel> dataNgoaiNuoc;
+    RecyclerView mRecyclerViewTrongNuoc;
+    RecyclerView mRecyclerViewNgoaiNuoc;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate( R.layout.fragment_show_tour, container, false );
-        data = new ArrayList<>();
+        dataTrongNuoc = new ArrayList<>();
         anhXa( view );
         loadTours( view.getContext() );
 
@@ -54,6 +56,7 @@ public class ShowTourFragment extends Fragment {
                 for (int i = 0; i < result.length(); i++) {
                     try {
                         JSONObject item = result.getJSONObject( i );
+                        String loaiTour = item.getString( "LoaiTour" );
                         String ma = item.getString( "Matour" );
                         String ten = item.getString( "TenTour" );
                         String img = PHPConnectionConstants.HOST + "/web_QLTourDuLich_php/tour_dulich/" + item.getString( "HinhAnh" );
@@ -74,23 +77,33 @@ public class ShowTourFragment extends Fragment {
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
-                        data.add( tour );
+                        if (loaiTour.equals( "1" )) {
+                            dataTrongNuoc.add( tour );
+                        } else {
+                            dataNgoaiNuoc.add( tour );
+                        }
 
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
-                TourRecyclerViewAdapter mRcvAdapter = new TourRecyclerViewAdapter( data, context );
+                TourRecyclerViewAdapter mRcvAdapter = new TourRecyclerViewAdapter( dataTrongNuoc, context );
                 GridLayoutManager layoutManager = new GridLayoutManager( context, 2 );
                 layoutManager.setOrientation( LinearLayoutManager.VERTICAL );
-                mRecyclerView.setLayoutManager( layoutManager );
-                mRecyclerView.setAdapter( mRcvAdapter );
+                mRecyclerViewTrongNuoc.setLayoutManager( layoutManager );
+                mRecyclerViewTrongNuoc.setAdapter( mRcvAdapter );
+
+//                TourRecyclerViewAdapter mRcvAdapter1 = new TourRecyclerViewAdapter( dataNgoaiNuoc, context );
+//                GridLayoutManager layoutManager1 = new GridLayoutManager( context, 2 );
+//                layoutManager.setOrientation( LinearLayoutManager.VERTICAL );
+//                mRecyclerViewNgoaiNuoc.setLayoutManager( layoutManager1 );
+//                mRecyclerViewNgoaiNuoc.setAdapter( mRcvAdapter1 );
             }
         } );
     }
 
     private void anhXa(View view) {
-        mRecyclerView = (RecyclerView) view.findViewById( R.id.recycle_ShowTour );
-
+        mRecyclerViewTrongNuoc = (RecyclerView) view.findViewById( R.id.show_tour_fragment_recycler_tour_trong_nuoc );
+        mRecyclerViewNgoaiNuoc = (RecyclerView) view.findViewById( R.id.show_tour_fragment_recycler_tour_ngoai_nuoc );
     }
 }

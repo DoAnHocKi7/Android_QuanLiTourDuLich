@@ -21,6 +21,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private EditText edt_Password;
     private Button btn_Dangnhap;
     private Button btn_Dangky;
+    public String userDaLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,19 +29,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         setContentView( R.layout.activity_dang_nhap );
 
         /*Kiem Tra de tu dong dang nhap*/
-        LoginLogicPresenter logicPresenter = new LoginLogicPresenter( this );
-        String userDaLogin = logicPresenter.layUserDaDangNhap( this );
-        if (userDaLogin!=null&&!userDaLogin.isEmpty()) {
-            Intent intent = new Intent( this, MainActivity.class );
-            intent.putExtra( DangNhapConstants.Username, userDaLogin );
-            startActivity( intent );
-            return;
-        }
+        kiemTraDangNhap();
         /*---------------------------*/
-        edt_Username = (EditText) findViewById( R.id.login_et_userName );
-        edt_Password = (EditText) findViewById( R.id.login_et_password );
-        btn_Dangnhap = (Button) findViewById( R.id.login_btn_login );
-        btn_Dangky = (Button) findViewById( R.id.login_btn_toSignUp );
+        anhXa();
 
 
         btn_Dangky.setOnClickListener( new View.OnClickListener() {
@@ -60,19 +51,41 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                 if (!userName.isEmpty() && !password.isEmpty()) {
                     LoginLogicPresenter loginLogic = new LoginLogicPresenter( LoginActivity.this );
                     loginLogic.xuLiDangNhap( userName, password, LoginActivity.this );
-                    Intent intent = new Intent( LoginActivity.this, MainActivity.class );
-                    intent.putExtra( DangNhapConstants.Username, userDaLogin );
-                    startActivity( intent );
-                }else{
+//                    Intent intent = new Intent( LoginActivity.this, MainActivity.class );
+//                    intent.putExtra( DangNhapConstants.Username, userDaLogin );
+//                    startActivity( intent );
+                } else {
                     Toast.makeText( LoginActivity.this, "Hãy điền tất cả các trường!", Toast.LENGTH_SHORT ).show();
                 }
             }
         } );
     }
 
+    private void anhXa() {
+        edt_Username = (EditText) findViewById( R.id.login_et_userName );
+        edt_Password = (EditText) findViewById( R.id.login_et_password );
+        btn_Dangnhap = (Button) findViewById( R.id.login_btn_login );
+        btn_Dangky = (Button) findViewById( R.id.login_btn_toSignUp );
+    }
+
+    private boolean kiemTraDangNhap() {
+        LoginLogicPresenter logicPresenter = new LoginLogicPresenter( this );
+        userDaLogin = logicPresenter.layUserDaDangNhap( this );
+        if (userDaLogin != null && !userDaLogin.isEmpty()) {
+            Intent intent = new Intent( this, MainActivity.class );
+            intent.putExtra( DangNhapConstants.Username, userDaLogin );
+            startActivity( intent );
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public void dangNhapThanhCong(String saveUsername) {
         //chuyen den Activity nao do voi username
+        Intent intent = new Intent( this, MainActivity.class );
+        intent.putExtra( DangNhapConstants.Username, userDaLogin );
+        startActivity( intent );
         Toast.makeText( this, "Đăng nhập thành công", Toast.LENGTH_SHORT ).show();
     }
 

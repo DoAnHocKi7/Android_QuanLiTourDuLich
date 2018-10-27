@@ -2,7 +2,9 @@ package com.example.tranthibay.ql_tourdulich.View.ChiTietTour;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -24,6 +26,7 @@ import com.example.tranthibay.ql_tourdulich.R;
 import com.example.tranthibay.ql_tourdulich.View.GioHang.GioHangActivity;
 import com.example.tranthibay.ql_tourdulich.View.MainActivity;
 import com.example.tranthibay.ql_tourdulich.View.MuaHang.MuaHangActivity;
+import com.example.tranthibay.ql_tourdulich.View.ThanhToan.ThanhToanActivity;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -43,7 +46,6 @@ public class ChiTietTourActivity extends AppCompatActivity implements ChiTietTou
     private TextView tv_diaChi;
     private TextView tv_dChiKS;
     /*-------------------------*/
-
 
 
     private EditText edt_setSL;
@@ -162,11 +164,15 @@ public class ChiTietTourActivity extends AppCompatActivity implements ChiTietTou
         this.btn_datTourNgay.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent( context, MuaHangActivity.class );
-                intent.putExtra( TourConstants.PASSEDTOUR, tourModel );
-                startActivity( intent );
+                    Intent intent = new Intent( context, MuaHangActivity.class );
+                    intent.putExtra( TourConstants.PASSEDTOUR, tourModel );
+                    startActivity( intent );
+
+
+
             }
         } );
+
     }
 
     @Override

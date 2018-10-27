@@ -30,13 +30,23 @@
 
     <Button
         android:id="@+id/login_btn_login"
-        android:layout_width="300dp"
+        android:layout_width="140dp"
         android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="202dp"
+        android:layout_alignStart="@+id/login_et_userName"
+        android:layout_alignTop="@+id/login_btn_boQua"
         android:background="#529be9"
         android:text="Đăng nhập"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/login_btn_boQua"
+        android:layout_width="139dp"
+        android:layout_height="40dp"
+        android:layout_alignEnd="@+id/login_et_userName"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="196dp"
+        android:background="#529be9"
+        android:text="Bỏ qua"
         android:textColor="#ffffff" />
 
     <ImageView

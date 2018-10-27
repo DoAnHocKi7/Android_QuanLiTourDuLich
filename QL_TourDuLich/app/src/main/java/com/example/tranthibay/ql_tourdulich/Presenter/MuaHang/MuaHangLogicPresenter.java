@@ -15,6 +15,7 @@ import com.example.tranthibay.ql_tourdulich.Constants.PHPConnectionConstants;
 import com.example.tranthibay.ql_tourdulich.Model.MuaHang.KhachHangModel;
 import com.example.tranthibay.ql_tourdulich.Model.MuaHang.TourDaChonModel;
 import com.example.tranthibay.ql_tourdulich.Model.ShowTour.KhachSanModel;
+import com.example.tranthibay.ql_tourdulich.View.MainActivity;
 import com.example.tranthibay.ql_tourdulich.View.MuaHang.MuaHangView;
 
 import java.util.HashMap;
@@ -52,6 +53,11 @@ public class MuaHangLogicPresenter implements MuaHangImplementPresenter {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
+                if (MainActivity.KhachHangModel != null) {
+                    params.put( "MaKH", khachHangModel.getMaKH() );
+
+                }
+
                 params.put( "TenKH", khachHangModel.getTenKH() );
                 params.put( "DiaChiKH", khachHangModel.getDiaChi() );
                 params.put( "EmailKH", khachHangModel.getEmail() );

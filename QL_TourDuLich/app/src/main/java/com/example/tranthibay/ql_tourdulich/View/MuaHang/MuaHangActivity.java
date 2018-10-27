@@ -1,7 +1,7 @@
 package com.example.tranthibay.ql_tourdulich.View.MuaHang;
 
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,6 +32,8 @@ public class MuaHangActivity extends AppCompatActivity implements MuaHangView {
     private KhachHangModel khachHangModel;
 
     Toolbar toolbar;
+    private TextView tv_tenKH;
+    private TextView tv_sdtKH;
     private TextView tv_diaDiem;
     private TextView tv_gia;
     private TextView tv_khachSan;
@@ -56,6 +58,7 @@ public class MuaHangActivity extends AppCompatActivity implements MuaHangView {
         setContentView( R.layout.activity_mua_hang );
         tour = layThongTinTour();
         anhXa();
+        setThongTinKhachHang();
         loadTourDuocChon();
         datTourNgay();
     }
@@ -89,7 +92,9 @@ public class MuaHangActivity extends AppCompatActivity implements MuaHangView {
         rdoGroup_gTinhKH = (RadioGroup) findViewById( R.id.mua_hang_grRado_gioiTinh );
         /*-------------------------*/
         btn_DatTourNgay = (Button) findViewById( R.id.mua_hang_btn_datTour );
-
+//--------------------
+        tv_tenKH = (TextView) findViewById( R.id.mua_hang_tv_TenKH );
+        tv_sdtKH = (TextView) findViewById( R.id.mua_hang_tv_SdtKH );
     }
 
     private void loadTourDuocChon() {
@@ -134,7 +139,24 @@ public class MuaHangActivity extends AppCompatActivity implements MuaHangView {
         btn_DatTourNgay.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                layThongTinKhachHang();
+//                AlertDialog.Builder builder = new AlertDialog.Builder( ChiTietTourActivity.this );
+//                builder.setTitle( "Thông báo!" );
+//                builder.setMessage( "Bạn có đồng ý mua hàng với tài khoản " + MainActivity.KhachHangModel.getTenKH() );
+//                builder.setPositiveButton( "OK", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        //dat tour vs kh co san
+//                    }
+//                } );
+//
+//                AlertDialog alertDialog = builder.create();
+//                alertDialog.show();
+                if (MainActivity.KhachHangModel != null) {
+                    khachHangModel=MainActivity.KhachHangModel;
+                } else{
+                    layThongTinKhachHang();
+                }
+
                 MuaHangLogicPresenter logicPresenter = new MuaHangLogicPresenter( MuaHangActivity.this, MuaHangActivity.this );
                 int soNguoi = Integer.valueOf( edt_soNguoi.getText().toString() );
                 double tongTien = soNguoi * tour.getGia();
@@ -152,18 +174,46 @@ public class MuaHangActivity extends AppCompatActivity implements MuaHangView {
         String emailKH = edt_emailKH.getText().toString();
         String sdtKH = edt_sdtKH.getText().toString();
         if (!(tenKH.isEmpty() || diaChiKH.isEmpty() || emailKH.isEmpty() || sdtKH.isEmpty())) {
-            this.khachHangModel = new KhachHangModel( "", TourConstants.LOAIKHMACDINH, tenKH,
+            this.khachHangModel = new KhachHangModel( TourConstants.LOAIKHMACDINH, tenKH,
                     rdo_GioiTinh.getText().toString(), emailKH, sdtKH, diaChiKH );
         }
 
     }
 
+    private void setThongTinKhachHang() {
+        if (MainActivity.KhachHangModel != null) {
+            findViewById( R.id.thongtin1 ).setVisibility( View.GONE );
+            findViewById( R.id.thongtin2 ).setVisibility( View.GONE );
+            findViewById( R.id.thongtin3 ).setVisibility( View.GONE );
+            findViewById( R.id.thongtin4 ).setVisibility( View.GONE );
+//            edt_tenKH.setVisibility( View.INVISIBLE );
+//            edt_sdtKH.setVisibility( View.INVISIBLE );
+//            edt_hoKH.setVisibility( View.INVISIBLE );
+//            edt_diaChiKH.setVisibility( View.INVISIBLE );
+//            edt_emailKH.setVisibility( View.INVISIBLE );
+//            rdoGroup_gTinhKH.setVisibility( View.INVISIBLE );
+
+            tv_sdtKH.setText( "Số điện thoại: " + MainActivity.KhachHangModel.getSdt() );
+            tv_tenKH.setText( "Tên khách hàng: " + MainActivity.KhachHangModel.getTenKH() );
+        } else {
+            findViewById( R.id.thongtin ).setVisibility( View.GONE );
+
+        }
+    }
+
     @Override
     public void datTourNgayThanhCong(String maMuaHang) {
-        AlertDialog.Builder builder=new AlertDialog.Builder( this );
+        AlertDialog.Builder builder = new AlertDialog.Builder( this );
         builder.setTitle( "Đặt hàng thành công!" );
-        builder.setMessage( "Hãy nhớ mã mua hàng của bạn: "+maMuaHang );
-        AlertDialog alertDialog=builder.create();
+        builder.setMessage( "Hãy nhớ mã mua hàng của bạn: " + maMuaHang );
+        builder.setPositiveButton( "OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = new Intent( MuaHangActivity.this, MainActivity.class );
+                startActivity( intent );
+            }
+        } );
+        AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
 }

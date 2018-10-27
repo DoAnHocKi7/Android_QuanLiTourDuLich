@@ -1,7 +1,7 @@
 package com.example.tranthibay.ql_tourdulich.Model.MuaHang;
 
 public class KhachHangModel {
-    public KhachHangModel(String maKH, String loaiKH, String tenKH, String gioiTinh, String email, String sdt, String diaChi) {
+    public KhachHangModel(String loaiKH, String tenKH, String gioiTinh, String email, String sdt, String diaChi) {
         this.maKH = maKH;
         this.loaiKH = loaiKH;
         this.tenKH = tenKH;

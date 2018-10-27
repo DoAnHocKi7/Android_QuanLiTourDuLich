@@ -1,5 +1,6 @@
 package com.example.tranthibay.ql_tourdulich.View.DangKy;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import com.example.tranthibay.ql_tourdulich.Model.DangKy.SignUpModel;
 import com.example.tranthibay.ql_tourdulich.Presenter.DangKy.SignUpLogicPresenter;
 import com.example.tranthibay.ql_tourdulich.R;
+import com.example.tranthibay.ql_tourdulich.View.DangNhap.LoginActivity;
 
 public class SignUpActivity extends AppCompatActivity implements SignUpView {
     private Button btn_signUp;
@@ -83,7 +85,9 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
 
     @Override
     public void dangKyThanhCong() {
-        Toast.makeText( this, "Đã đăng kí thành công", Toast.LENGTH_LONG ).show();
+        Toast.makeText( this, "Đăng kí thành công. Đăng nhập lại!", Toast.LENGTH_LONG ).show();
+        Intent intent=new Intent( SignUpActivity.this, LoginActivity.class );
+        startActivity( intent );
     }
 
     @Override

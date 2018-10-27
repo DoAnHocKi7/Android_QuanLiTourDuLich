@@ -21,6 +21,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private EditText edt_Password;
     private Button btn_Dangnhap;
     private Button btn_Dangky;
+    private Button btn_boQua;
     public String userDaLogin;
 
     @Override
@@ -33,7 +34,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         /*---------------------------*/
         anhXa();
 
-
+        boQuaDangNhap();
         btn_Dangky.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,10 +62,21 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         } );
     }
 
+    private void boQuaDangNhap() {
+        btn_boQua.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( LoginActivity.this, MainActivity.class );
+                startActivity( intent );
+            }
+        } );
+    }
+
     private void anhXa() {
         edt_Username = (EditText) findViewById( R.id.login_et_userName );
         edt_Password = (EditText) findViewById( R.id.login_et_password );
         btn_Dangnhap = (Button) findViewById( R.id.login_btn_login );
+        btn_boQua = (Button) findViewById( R.id.login_btn_boQua );
         btn_Dangky = (Button) findViewById( R.id.login_btn_toSignUp );
     }
 

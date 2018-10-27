@@ -62,12 +62,12 @@ public class ThanhToanLogicPresenter implements ThanhToanImplementPresenter {
         StringRequest request = new StringRequest( Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                if (response.equals( "ThanhCong" )) {
-                    thanhToanView.thanhToanGioHangThanhCong();
-                }else {
+                if (response.equals( "ThatBai" )) {
                     thanhToanView.thanhToanGioHangThatBai();
+                }else {
+                    thanhToanView.thanhToanGioHangThanhCong(response);
+                    Log.e( "Response", "Successful!" );
                 }
-                Log.e( "Response", "Successful!" );
             }
         }, new Response.ErrorListener() {
             @Override

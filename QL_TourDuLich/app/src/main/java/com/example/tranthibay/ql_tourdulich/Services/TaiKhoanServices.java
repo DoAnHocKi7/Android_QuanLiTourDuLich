@@ -99,4 +99,24 @@ public class TaiKhoanServices {
     public  void kiemTraTKTonTai(String username){
 
     }
+
+    public void layThongTinTaiKhoan(String userName,Context context,VolleyCallback callback) {
+        RequestQueue requestQueue = Volley.newRequestQueue( context );
+        String url = PHPConnectionConstants.HOST + "/TourDuLichAPI/KhachHangAPI/selectKhachHang.php?tenKH="+userName;
+        JsonArrayRequest arrayRequest = new JsonArrayRequest( Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+
+                if (response.length() > 0) {
+                    callback.onSuccess( response );
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText( context, "Có lỗi khi load dữ liệu", Toast.LENGTH_SHORT ).show();
+            }
+        } );
+        requestQueue.add( arrayRequest );
+    }
 }

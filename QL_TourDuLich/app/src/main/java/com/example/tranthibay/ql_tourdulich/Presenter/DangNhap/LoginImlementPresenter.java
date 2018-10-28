@@ -11,6 +11,7 @@ public interface LoginImlementPresenter {
 
     String layUserDaDangNhap(Context context);
 
-    void xoaUserDaDangNhap(Context context);
+   // void xoaUserDaDangNhap(Context context);
 
+    //void khoiTaoThongTinKhachHang(Context context);
 }

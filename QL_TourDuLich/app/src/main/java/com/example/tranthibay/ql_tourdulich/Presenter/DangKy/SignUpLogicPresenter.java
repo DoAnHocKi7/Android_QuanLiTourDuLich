@@ -122,7 +122,7 @@ public class SignUpLogicPresenter implements SignUpImplementPresenter {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params=new HashMap<String,String>();
-                params.put("TenKH",model.getUserName());
+                params.put("TenKH",model.getTen());
                 params.put("MatKhauKH",model.getPassword());
                 params.put( "EmailKH",model.getEmail() );
                 params.put("SdtKH",model.getSdt());

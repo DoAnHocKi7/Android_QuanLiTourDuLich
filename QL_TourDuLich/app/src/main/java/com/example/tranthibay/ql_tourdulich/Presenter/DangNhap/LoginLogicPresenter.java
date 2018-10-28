@@ -18,10 +18,13 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.tranthibay.ql_tourdulich.Constants.DangNhapConstants;
 import com.example.tranthibay.ql_tourdulich.Constants.PHPConnectionConstants;
+import com.example.tranthibay.ql_tourdulich.Constants.TourConstants;
 import com.example.tranthibay.ql_tourdulich.Model.DangNhap.LoginModel;
+import com.example.tranthibay.ql_tourdulich.Model.MuaHang.KhachHangModel;
 import com.example.tranthibay.ql_tourdulich.Services.TaiKhoanServices;
 import com.example.tranthibay.ql_tourdulich.Services.VolleyCallback;
 import com.example.tranthibay.ql_tourdulich.View.DangNhap.LoginView;
+import com.example.tranthibay.ql_tourdulich.View.MainActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -117,13 +120,43 @@ public class LoginLogicPresenter implements LoginImlementPresenter {
         return sharedPreferences.getString( DangNhapConstants.Username, null );
     }
 
-    @Override
-    public void xoaUserDaDangNhap(Context context) {
+    //@Override
+    public static void xoaUserDaDangNhap(Context context) {
+        MainActivity.Username=null;
+        MainActivity.KhachHangModel=null;
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences( context );
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.commit();
     }
 
+    public static void khoiTaoThongTinKhachHang(Context context) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences( context );
+        MainActivity.Username = sharedPreferences.getString( DangNhapConstants.Username, null );
 
+        //if (MainActivity.Username != null || !MainActivity.Username.isEmpty()) {//kiem tra da luu dang nhap chua
+            TaiKhoanServices taiKhoanServices = new TaiKhoanServices( context );
+            taiKhoanServices.layThongTinTaiKhoan( MainActivity.Username, context, new VolleyCallback() {
+                @Override
+                public void onSuccess(JSONArray result) {
+                    try {
+                        JSONObject item = result.getJSONObject( 0 );
+                        String maKh = item.getString( "Ma_KH" );
+                        String tenKH = item.getString( "TenKH" );
+                        String sdtKH = item.getString( "Phone" );
+                        String emailKH = item.getString( "Email" );
+                        String diaChiKH = item.getString( "DiaChi" );
+                        String gTinhKH = item.getString( "SexKH" );
+
+                        MainActivity.KhachHangModel = new KhachHangModel( TourConstants.LOAIKHMACDINH, tenKH, gTinhKH, emailKH, sdtKH, diaChiKH );
+                        MainActivity.KhachHangModel.setMaKH( maKh );
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            } );
+        //}
+
+    }
 }

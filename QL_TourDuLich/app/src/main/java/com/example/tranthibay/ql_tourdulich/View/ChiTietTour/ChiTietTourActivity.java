@@ -26,8 +26,10 @@ import com.example.tranthibay.ql_tourdulich.Model.MuaHang.TourDaChonModel;
 import com.example.tranthibay.ql_tourdulich.Model.ShowTour.KhachSanModel;
 import com.example.tranthibay.ql_tourdulich.Model.ShowTour.TourModel;
 import com.example.tranthibay.ql_tourdulich.Presenter.ChiTietTour.ChiTietTourLogicPresenter;
+import com.example.tranthibay.ql_tourdulich.Presenter.DangNhap.LoginLogicPresenter;
 import com.example.tranthibay.ql_tourdulich.R;
 import com.example.tranthibay.ql_tourdulich.Services.VolleyCallback;
+import com.example.tranthibay.ql_tourdulich.View.DangNhap.LoginActivity;
 import com.example.tranthibay.ql_tourdulich.View.GioHang.GioHangActivity;
 import com.example.tranthibay.ql_tourdulich.View.MainActivity;
 import com.example.tranthibay.ql_tourdulich.View.MuaHang.MuaHangActivity;
@@ -183,6 +185,28 @@ public class ChiTietTourActivity extends AppCompatActivity implements ChiTietTou
                 startActivity( intent );
             }
             break;
+            case  R.id.tool_bar_item_dang_xuat:{
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Thông báo");
+                builder.setMessage("Bạn có muốn đăng xuất không?");
+                builder.setCancelable(false);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        LoginLogicPresenter.xoaUserDaDangNhap( ChiTietTourActivity.this );
+                        Toast.makeText( ChiTietTourActivity.this, "Đăng xuất thành công", Toast.LENGTH_SHORT ).show();
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+
+            }break;
         }
         return true;
     }
@@ -218,9 +242,46 @@ public class ChiTietTourActivity extends AppCompatActivity implements ChiTietTou
         this.btn_datTourNgay.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent( context, MuaHangActivity.class );
-                intent.putExtra( TourConstants.PASSEDTOUR, tourModel );
-                startActivity( intent );
+
+
+                /*-------Xac nhan tai khoan. Co muon dang nhap de mua hang---------*/
+                if (MainActivity.KhachHangModel == null) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder( ChiTietTourActivity.this );
+                    builder.setTitle( "Xác nhận là thành viên!" );
+                    builder.setMessage( "Bạn có muốn đăng nhập?" );
+                    builder.setPositiveButton( "OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Intent intent = new Intent( ChiTietTourActivity.this, LoginActivity.class );
+                            startActivity( intent );
+                        }
+                    } );
+                    builder.setNegativeButton( "Không", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Intent intent = new Intent( ChiTietTourActivity.this, MuaHangActivity.class );
+                            intent.putExtra( TourConstants.PASSEDTOUR, tourModel );
+                            startActivity( intent );
+                        }
+                    } );
+//                    builder.setNegativeButton( "No", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            Intent intent = new Intent( GioHangActivity.this, ThanhToanActivity.class );
+//                            startActivity( intent );
+//                        }
+//                    } );
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+                } else {
+                    Intent intent = new Intent( ChiTietTourActivity.this, MuaHangActivity.class );
+                    intent.putExtra( TourConstants.PASSEDTOUR, tourModel );
+                    startActivity( intent );
+                }
+                /*--------------------------------------*/
+//                Intent intent = new Intent( context, MuaHangActivity.class );
+//                intent.putExtra( TourConstants.PASSEDTOUR, tourModel );
+//                startActivity( intent );
 
 
             }

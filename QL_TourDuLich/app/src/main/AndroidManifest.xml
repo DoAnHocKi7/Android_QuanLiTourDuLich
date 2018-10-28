@@ -16,23 +16,20 @@
         <activity android:name=".View.DangNhap.LoginActivity" >
             <intent-filter>
             <action android:name="android.intent.action.MAIN" />
-
             <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".View.DangKy.SignUpActivity" />
 
+        <activity android:name=".View.MainActivity2" >
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
 
         <activity android:name=".View.MainActivity">
         </activity>
-
-        <!--<activity android:name=".View.MainActivity2">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        <!--</activity>-->
 
 
         <activity android:name=".View.ChiTietTour.ChiTietTourActivity" />

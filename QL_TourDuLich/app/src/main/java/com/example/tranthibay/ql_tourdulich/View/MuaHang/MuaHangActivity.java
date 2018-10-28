@@ -21,8 +21,10 @@ import com.example.tranthibay.ql_tourdulich.Model.MuaHang.TourDaChonModel;
 import com.example.tranthibay.ql_tourdulich.Model.ShowTour.TourModel;
 import com.example.tranthibay.ql_tourdulich.Presenter.MuaHang.MuaHangLogicPresenter;
 import com.example.tranthibay.ql_tourdulich.R;
+import com.example.tranthibay.ql_tourdulich.View.DangNhap.LoginActivity;
 import com.example.tranthibay.ql_tourdulich.View.GioHang.GioHangActivity;
 import com.example.tranthibay.ql_tourdulich.View.MainActivity;
+import com.example.tranthibay.ql_tourdulich.View.ThanhToan.ThanhToanActivity;
 
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
@@ -151,9 +153,11 @@ public class MuaHangActivity extends AppCompatActivity implements MuaHangView {
 //
 //                AlertDialog alertDialog = builder.create();
 //                alertDialog.show();
+
+
                 if (MainActivity.KhachHangModel != null) {
-                    khachHangModel=MainActivity.KhachHangModel;
-                } else{
+                    khachHangModel = MainActivity.KhachHangModel;
+                } else {
                     layThongTinKhachHang();
                 }
 

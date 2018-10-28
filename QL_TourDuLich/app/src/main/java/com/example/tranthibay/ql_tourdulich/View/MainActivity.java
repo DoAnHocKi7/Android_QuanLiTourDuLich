@@ -1,5 +1,6 @@
 package com.example.tranthibay.ql_tourdulich.View;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -24,6 +25,7 @@ import com.example.tranthibay.ql_tourdulich.Services.TaiKhoanServices;
 import com.example.tranthibay.ql_tourdulich.Services.VolleyCallback;
 import com.example.tranthibay.ql_tourdulich.View.DangNhap.LoginActivity;
 import com.example.tranthibay.ql_tourdulich.View.Fragment2.Fragment2;
+import com.example.tranthibay.ql_tourdulich.View.GioHang.GioHangActivity;
 import com.example.tranthibay.ql_tourdulich.View.ShowTour.ShowTourFragment;
 
 import org.json.JSONArray;
@@ -52,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         caiDatBottomNavgation();
         khoiTaoGioHang();
         khoiTaoThongTinKhachHang();
-
     }
 
     private void caiDatBottomNavgation() {
@@ -68,9 +69,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                     case R.id.item2: {
-                        selectedFragment = new Fragment2();
+                        //selectedFragment = new Fragment2();
+                        Intent intent=new Intent(MainActivity.this, GioHangActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        return true;
                     }
-                    break;
+                    //break;
                     case R.id.item3: {
                         selectedFragment = new com.example.tranthibay.ql_tourdulich.View.Fragment3.ShowTourFragment();
                     }
@@ -95,31 +100,32 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void khoiTaoThongTinKhachHang() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences( this );
-        Username = sharedPreferences.getString( DangNhapConstants.Username, null );
-        TaiKhoanServices taiKhoanServices=new TaiKhoanServices( this );
-        taiKhoanServices.layThongTinTaiKhoan( Username,this, new VolleyCallback() {
-            @Override
-            public void onSuccess(JSONArray result) {
-                for (int i = 0; i < result.length(); i++) {
-                    try {
-                        JSONObject item = result.getJSONObject( i );
-                        String maKh = item.getString( "Ma_KH" );
-                        String tenKH = item.getString( "TenKH" );
-                        String sdtKH = item.getString( "Phone" );
-                        String emailKH = item.getString( "Email" );
-                        String diaChiKH = item.getString( "DiaChi" );
-                        String gTinhKH = item.getString( "SexKH" );
-
-                        KhachHangModel = new KhachHangModel( TourConstants.LOAIKHMACDINH, tenKH, gTinhKH,emailKH,sdtKH,diaChiKH );
-                        KhachHangModel.setMaKH( maKh );
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        } );
+    public void khoiTaoThongTinKhachHang() {
+//        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences( this );
+//        Username = sharedPreferences.getString( DangNhapConstants.Username, null );
+//        TaiKhoanServices taiKhoanServices=new TaiKhoanServices( this );
+//        taiKhoanServices.layThongTinTaiKhoan( Username,this, new VolleyCallback() {
+//            @Override
+//            public void onSuccess(JSONArray result) {
+//                for (int i = 0; i < result.length(); i++) {
+//                    try {
+//                        JSONObject item = result.getJSONObject( i );
+//                        String maKh = item.getString( "Ma_KH" );
+//                        String tenKH = item.getString( "TenKH" );
+//                        String sdtKH = item.getString( "Phone" );
+//                        String emailKH = item.getString( "Email" );
+//                        String diaChiKH = item.getString( "DiaChi" );
+//                        String gTinhKH = item.getString( "SexKH" );
+//
+//                        KhachHangModel = new KhachHangModel( TourConstants.LOAIKHMACDINH, tenKH, gTinhKH,emailKH,sdtKH,diaChiKH );
+//                        KhachHangModel.setMaKH( maKh );
+//
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        } );
+        LoginLogicPresenter.khoiTaoThongTinKhachHang( this );
     }
 }

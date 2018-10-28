@@ -13,6 +13,10 @@
         android2:title="item"
         app:showAsAction="ifRoom" />
 
+    <item
+        android2:id="@+id/tool_bar_item_dang_xuat"
+        android2:title="Đăng xuất"
+        app:showAsAction="ifRoom" />
     <item android2:title="Cài đặt" />
 
     <item android2:title="Trợ giúp" />

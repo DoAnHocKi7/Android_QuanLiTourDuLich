@@ -95,10 +95,17 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     public void dangNhapThanhCong(String saveUsername) {
         //chuyen den Activity nao do voi username
-        Intent intent = new Intent( this, MainActivity.class );
-        intent.putExtra( DangNhapConstants.Username, userDaLogin );
-        startActivity( intent );
         Toast.makeText( this, "Đăng nhập thành công", Toast.LENGTH_SHORT ).show();
+
+        if(isTaskRoot()) {
+            Intent intent = new Intent( this, MainActivity.class );
+            intent.putExtra( DangNhapConstants.Username, userDaLogin );
+            startActivity( intent );
+        }else{
+            LoginLogicPresenter.khoiTaoThongTinKhachHang( this );
+            onBackPressed();
+        }
+
     }
 
     @Override

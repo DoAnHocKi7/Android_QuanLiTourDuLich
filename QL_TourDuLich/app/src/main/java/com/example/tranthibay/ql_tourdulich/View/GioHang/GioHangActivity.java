@@ -1,6 +1,8 @@
 package com.example.tranthibay.ql_tourdulich.View.GioHang;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -16,6 +18,7 @@ import android.widget.TextView;
 import com.example.tranthibay.ql_tourdulich.Adapter.TourDaDatReCyclerAdapter;
 import com.example.tranthibay.ql_tourdulich.Presenter.GioHang.GioHangLogicPresenter;
 import com.example.tranthibay.ql_tourdulich.R;
+import com.example.tranthibay.ql_tourdulich.View.DangNhap.LoginActivity;
 import com.example.tranthibay.ql_tourdulich.View.MainActivity;
 import com.example.tranthibay.ql_tourdulich.View.ThanhToan.ThanhToanActivity;
 
@@ -50,8 +53,38 @@ public class GioHangActivity extends AppCompatActivity {
         btn_thanhToanLuon.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(GioHangActivity.this, ThanhToanActivity.class );
-                startActivity( intent );
+                if (MainActivity.KhachHangModel == null) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder( GioHangActivity.this );
+                    builder.setTitle( "Xác nhận là thành viên!" );
+                    builder.setMessage( "Bạn có muốn đăng nhập?" );
+                    builder.setPositiveButton( "OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Intent intent = new Intent( GioHangActivity.this, LoginActivity.class );
+                            startActivity( intent );
+                        }
+                    } );
+                    builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Intent intent = new Intent( GioHangActivity.this, ThanhToanActivity.class );
+                            startActivity( intent );
+                        }
+                    });
+//                    builder.setNegativeButton( "No", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            Intent intent = new Intent( GioHangActivity.this, ThanhToanActivity.class );
+//                            startActivity( intent );
+//                        }
+//                    } );
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+                } else {
+                    Intent intent = new Intent( GioHangActivity.this, ThanhToanActivity.class );
+                    startActivity( intent );
+                }
             }
         } );
     }
@@ -60,7 +93,7 @@ public class GioHangActivity extends AppCompatActivity {
         btn_tiepTucMuaHang.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent( GioHangActivity.this,MainActivity.class );
+                Intent intent = new Intent( GioHangActivity.this, MainActivity.class );
                 startActivity( intent );
             }
         } );

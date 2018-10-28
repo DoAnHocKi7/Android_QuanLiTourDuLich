@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.example.tranthibay.ql_tourdulich.Model.MuaHang.KhachHangModel;
 import com.example.tranthibay.ql_tourdulich.Presenter.ThanhToan.ThanhToanLogicPresenter;
@@ -28,12 +28,23 @@ public class ThanhToanActivity extends AppCompatActivity implements ThanhToanVie
     private RadioButton rdo_gioiTinh;
     /*----------------------------*/
     private Button btn_ThanhToanGioHang;
+    /*--------------------*/
+    private TextView tv_tenKH;
+    private TextView tv_sdtKH;
+    private TextView tv_emailKH;
+    private TextView tv_diaChiKH;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_thanh_toan );
-        anhXa();
+        if (MainActivity.KhachHangModel == null) {
+            setContentView( R.layout.activity_thanh_toan );
+            anhXa();
+        } else {
+            setContentView( R.layout.activity_thanh_toan_gio_hang_da_dang_nhap );
+            anhXaDaDangNhap();
+            showKhachHangDaDangNhap();
+        }
         thanhToanGioHang();
     }
 
@@ -51,15 +62,41 @@ public class ThanhToanActivity extends AppCompatActivity implements ThanhToanVie
         btn_ThanhToanGioHang = (Button) findViewById( R.id.thanh_toan_btn_datTour );
     }
 
+    private void anhXaDaDangNhap() {
+        tv_tenKH = (TextView) findViewById( R.id.thanh_toan_da_dang_nhap_tv_HoTen );
+        tv_diaChiKH = (TextView) findViewById( R.id.thanh_toan_da_dang_nhap_tv_DiaChi );
+        tv_emailKH = (TextView) findViewById( R.id.thanh_toan_da_dang_nhap_tv_Email );
+        tv_sdtKH = (TextView) findViewById( R.id.thanh_toan_da_dang_nhap_tv_Sdt );
+        btn_ThanhToanGioHang = (Button) findViewById( R.id.thanh_toan_da_dang_nhap_btn_datTour );
+
+    }
+
+    private void showKhachHangDaDangNhap() {
+        tv_tenKH.setText( "Tên khách hàng: " + MainActivity.KhachHangModel.getTenKH() );
+        tv_emailKH.setText( "Email: " + MainActivity.KhachHangModel.getEmail() );
+        tv_sdtKH.setText( "Số điện thoại: " + MainActivity.KhachHangModel.getSdt() );
+        tv_diaChiKH.setText( "Địa chỉ: " + MainActivity.KhachHangModel.getDiaChi() );
+    }
+
     private void thanhToanGioHang() {
         btn_ThanhToanGioHang.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String tenKH = edt_hoKH.getText() + " " + edt_tenKH.getText();
-                String gTinhKH = rdo_gioiTinh.getText().toString();
-                String emailKH = edt_emailKH.getText().toString();
-                String dChiKH = edt_diaChiKH.getText().toString();
-                String sdtKH = edt_sdtKH.getText().toString();
+                String tenKH, gTinhKH, emailKH, sdtKH, dChiKH;
+                if (MainActivity.KhachHangModel == null) {
+                    tenKH = edt_hoKH.getText() + " " + edt_tenKH.getText();
+                    gTinhKH = rdo_gioiTinh.getText().toString();
+                    emailKH = edt_emailKH.getText().toString();
+                    dChiKH = edt_diaChiKH.getText().toString();
+                    sdtKH = edt_sdtKH.getText().toString();
+
+                } else {
+                    tenKH = MainActivity.KhachHangModel.getTenKH();
+                    gTinhKH = MainActivity.KhachHangModel.getGioiTinh();
+                    emailKH = MainActivity.KhachHangModel.getEmail();
+                    dChiKH = MainActivity.KhachHangModel.getDiaChi();
+                    sdtKH = MainActivity.KhachHangModel.getSdt();
+                }
                 ThanhToanLogicPresenter thanhToanLogicPresenter = new ThanhToanLogicPresenter( ThanhToanActivity.this, ThanhToanActivity.this );
                 thanhToanLogicPresenter.thanhToanGioHang( new KhachHangModel( "4", tenKH, gTinhKH, emailKH, sdtKH, dChiKH ) );
             }
@@ -68,20 +105,18 @@ public class ThanhToanActivity extends AppCompatActivity implements ThanhToanVie
 
     @Override
     public void thanhToanGioHangThanhCong(String maHopDong) {
-        AlertDialog.Builder builder=new AlertDialog.Builder( this );
+        AlertDialog.Builder builder = new AlertDialog.Builder( this );
         builder.setTitle( "Đặt hàng thành công!" );
-        builder.setMessage( "Hãy nhớ mã mua hàng của bạn: "+maHopDong );
-
-
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setMessage( "Hãy nhớ mã mua hàng của bạn: " + maHopDong );
+        builder.setPositiveButton( "OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intent=new Intent(  ThanhToanActivity.this, MainActivity.class);
+                Intent intent = new Intent( ThanhToanActivity.this, MainActivity.class );
                 startActivity( intent );
             }
-        });
+        } );
 
-        AlertDialog alertDialog=builder.create();
+        AlertDialog alertDialog = builder.create();
         alertDialog.show();
 
 

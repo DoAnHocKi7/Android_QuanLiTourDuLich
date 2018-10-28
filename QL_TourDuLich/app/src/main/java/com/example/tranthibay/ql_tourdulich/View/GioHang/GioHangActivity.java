@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,6 +20,7 @@ import com.example.tranthibay.ql_tourdulich.View.MainActivity;
 import com.example.tranthibay.ql_tourdulich.View.ThanhToan.ThanhToanActivity;
 
 public class GioHangActivity extends AppCompatActivity {
+    Toolbar toolbar;
     private RecyclerView recyclerView_gioHang;
     private TextView tv_tongTien;
 
@@ -24,7 +28,6 @@ public class GioHangActivity extends AppCompatActivity {
     private Button btn_tiepTucMuaHang;
 
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_gio_hang );
@@ -64,9 +67,37 @@ public class GioHangActivity extends AppCompatActivity {
     }
 
     private void anhXa() {
+        toolbar = (Toolbar) findViewById( R.id.gio_hang_toolbar );
+        setSupportActionBar( toolbar );
+        getSupportActionBar().setDisplayShowTitleEnabled( false );
+        getSupportActionBar().setDisplayHomeAsUpEnabled( true );
+
         recyclerView_gioHang = (RecyclerView) findViewById( R.id.gio_hang_recycle_view_gio_hang );
         tv_tongTien = (TextView) findViewById( R.id.gio_hang_TongTien );
         btn_thanhToanLuon = (Button) findViewById( R.id.gio_hang_btn_ThanhToanLuon );
         btn_tiepTucMuaHang = (Button) findViewById( R.id.gio_hang_btn_TiepTucMuaHang );
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate( R.menu.chi_tiet_menu_gio_hang, menu );
+        return super.onCreateOptionsMenu( menu );
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home: {
+                onBackPressed();
+            }
+            break;
+            case R.id.gio_hang_tool_bar_item_home: {
+                Intent intent = new Intent( this, GioHangActivity.class );
+                startActivity( intent );
+            }
+            break;
+
+        }
+        return true;
+    }
+
 }

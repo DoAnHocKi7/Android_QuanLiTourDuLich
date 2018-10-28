@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/item1"
-        android:title="Home" />
+        android:title="Trang chủ" />
     <item
         android:id="@+id/item2"
-        android:title="Notify"/>
+        android:title="Giỏ hàng" />
     <item
         android:id="@+id/item3"
-        android:title="Settings"/>
+        android:title="Cài đặt" />
 </menu>

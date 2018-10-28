@@ -13,23 +13,34 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tranthibay.ql_tourdulich.Adapter.TourLienQuanAdapter;
+import com.example.tranthibay.ql_tourdulich.Constants.PHPConnectionConstants;
 import com.example.tranthibay.ql_tourdulich.Constants.TourConstants;
 import com.example.tranthibay.ql_tourdulich.Model.MuaHang.TourDaChonModel;
+import com.example.tranthibay.ql_tourdulich.Model.ShowTour.KhachSanModel;
 import com.example.tranthibay.ql_tourdulich.Model.ShowTour.TourModel;
 import com.example.tranthibay.ql_tourdulich.Presenter.ChiTietTour.ChiTietTourLogicPresenter;
 import com.example.tranthibay.ql_tourdulich.R;
+import com.example.tranthibay.ql_tourdulich.Services.VolleyCallback;
 import com.example.tranthibay.ql_tourdulich.View.GioHang.GioHangActivity;
 import com.example.tranthibay.ql_tourdulich.View.MainActivity;
 import com.example.tranthibay.ql_tourdulich.View.MuaHang.MuaHangActivity;
 import com.example.tranthibay.ql_tourdulich.View.ThanhToan.ThanhToanActivity;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ChiTietTourActivity extends AppCompatActivity implements ChiTietTourView {
@@ -45,6 +56,7 @@ public class ChiTietTourActivity extends AppCompatActivity implements ChiTietTou
     private TextView tv_GiaKS;
     private TextView tv_diaChi;
     private TextView tv_dChiKS;
+    private GridView grv_tourLienQuan;
     /*-------------------------*/
 
 
@@ -61,6 +73,7 @@ public class ChiTietTourActivity extends AppCompatActivity implements ChiTietTou
         anhXa();
         tour = layThongTinTour();
         hienThiChiTietTour( tour );
+        showTourLienQuan();
         datTourNgay( this, tour );
         themTourVaoGioHang();
     }
@@ -82,6 +95,7 @@ public class ChiTietTourActivity extends AppCompatActivity implements ChiTietTou
         tv_dChiKS = (TextView) findViewById( R.id.chi_tiet_tour_tv_DiaChiKS );
         tv_GiaKS = (TextView) findViewById( R.id.chi_tiet_tour_tv_GiaKhachSan );
         tv_diaChi = (TextView) findViewById( R.id.chi_tiet_tour_tv_DiaDiem );
+        grv_tourLienQuan=(GridView)findViewById( R.id.chi_tiet_tour_gidview_tour_lien_quan );
 
         btn_datTourNgay = (Button) findViewById( R.id.chi_tiet_tour_btn_DatTour_ngay );
         btn_themTourVaoGio = (Button) findViewById( R.id.chi_tiet_tour_btn_ThemVaoGio );
@@ -108,8 +122,48 @@ public class ChiTietTourActivity extends AppCompatActivity implements ChiTietTou
         Picasso.get().load( tour.getHinhAnh() ).into( img_Tour );
     }
 
-    @Override
     public void showTourLienQuan() {
+        ChiTietTourLogicPresenter tourLogicPresenter = new ChiTietTourLogicPresenter( this );
+        tourLogicPresenter.getTourLienQuan( tour.getLoaiTour(), this, new VolleyCallback() {
+            @Override
+            public void onSuccess(JSONArray result) {
+                ArrayList<TourModel> tourModels=new ArrayList<>(  );
+                TourModel tour = null;
+                KhachSanModel khachSan = null;
+                for (int i = 0; i < result.length(); i++) {
+                    try {
+                        JSONObject item = result.getJSONObject( i );
+                        String loaiTour = item.getString( "LoaiTour" );
+                        String ma = item.getString( "Matour" );
+                        String ten = item.getString( "TenTour" );
+                        String img = PHPConnectionConstants.HOST + "/web_QLTourDuLich_php/tour_dulich/" + item.getString( "HinhAnh" );
+                        Double gia = item.getDouble( "Gia" );
+                        String loai = item.getString( "LoaiTour" );
+                        String mota = item.getString( "MoTa" );
+                        String diaDiem = item.getString( "TenDiaDiem" );
+                        String tenks = item.getString( "tenks" );
+                        String maKS = item.getString( "MaKS" );
+                        String diaChi = item.getString( "diachi" );
+                        double tienKS = Double.valueOf( item.getString( "giatien" ) );
+                        String loaiKS = item.getString( "MaLoaiKS" );
+                        khachSan = new KhachSanModel( tenks, diaChi, tienKS, loaiKS );
+                        try {
+                            Date ngayDi = new SimpleDateFormat( "yyyy-dd-MM" ).parse( item.getString( "ngaykhoihanh" ) );
+                            Date ngayDen = new SimpleDateFormat( "yyyy-dd-MM" ).parse( item.getString( "ngayketthuc" ) );
+                            tour = new TourModel( ngayDi, ngayDen, ma, ten, img, gia, loai, mota, diaDiem, khachSan );
+
+                            TourLienQuanAdapter adapter=new TourLienQuanAdapter(ChiTietTourActivity.this,R.layout.item_row_tour_lien_quan,tourModels);
+                            grv_tourLienQuan.setAdapter( adapter );
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        tourModels.add( tour );
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        } );
     }
 
     @Override
@@ -164,10 +218,9 @@ public class ChiTietTourActivity extends AppCompatActivity implements ChiTietTou
         this.btn_datTourNgay.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Intent intent = new Intent( context, MuaHangActivity.class );
-                    intent.putExtra( TourConstants.PASSEDTOUR, tourModel );
-                    startActivity( intent );
-
+                Intent intent = new Intent( context, MuaHangActivity.class );
+                intent.putExtra( TourConstants.PASSEDTOUR, tourModel );
+                startActivity( intent );
 
 
             }

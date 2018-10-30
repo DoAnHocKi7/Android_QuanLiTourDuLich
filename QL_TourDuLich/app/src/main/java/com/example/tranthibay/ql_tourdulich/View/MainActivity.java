@@ -27,6 +27,7 @@ import com.example.tranthibay.ql_tourdulich.View.DangNhap.LoginActivity;
 import com.example.tranthibay.ql_tourdulich.View.Fragment2.Fragment2;
 import com.example.tranthibay.ql_tourdulich.View.GioHang.GioHangActivity;
 import com.example.tranthibay.ql_tourdulich.View.ShowTour.ShowTourFragment;
+import com.example.tranthibay.ql_tourdulich.View.TimKiemTour.TimKiemActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -77,7 +78,10 @@ public class MainActivity extends AppCompatActivity {
                     }
                     //break;
                     case R.id.item3: {
-                        selectedFragment = new com.example.tranthibay.ql_tourdulich.View.Fragment3.ShowTourFragment();
+                        //selectedFragment = new com.example.tranthibay.ql_tourdulich.View.Fragment3.ShowTourFragment();
+                        Intent intent=new Intent(MainActivity.this, TimKiemActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
                     }
                     break;
                 }

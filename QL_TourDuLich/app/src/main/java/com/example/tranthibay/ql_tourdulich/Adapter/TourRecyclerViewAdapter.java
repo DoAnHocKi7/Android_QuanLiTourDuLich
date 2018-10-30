@@ -37,7 +37,7 @@ public class TourRecyclerViewAdapter extends RecyclerView.Adapter<TourRecyclerVi
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
-        holder.tv_TenTour.setText( data.get( position ).getTenTour() );
+        holder.tv_TenTour.setText( data.get( position ).getDiaDiem() );
         holder.tv_GiaTour.setText( "Giá: " + String.valueOf( data.get( position ).getGia() ) );
 
         String imgSrc = data.get( position ).getHinhAnh();

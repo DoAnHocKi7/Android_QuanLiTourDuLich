@@ -42,6 +42,8 @@ public class TourDaDatReCyclerAdapter extends RecyclerView.Adapter<TourDaDatReCy
         holder.tv_thanhTienGioHang.setText( "Tổng tiền: " + String.valueOf( data.get( position ).getTongTien() ) );
         String imgSrc = data.get( position ).getTourModel().getHinhAnh();
         Picasso.get().load( imgSrc ).into( holder.img_tourDaDat );
+        holder.tv_DiaDiem.setText( data.get( position ). getTourModel().getDiaDiem());
+
         holder.img_delete.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,6 +85,7 @@ public class TourDaDatReCyclerAdapter extends RecyclerView.Adapter<TourDaDatReCy
     }
 
     private void themNguoi(RecyclerViewHolder holder, int position) {
+
         int soNguoi = data.get( position ).getSoNguoi() + 1;
         double tongTien = soNguoi * data.get( position ).getTourModel().getGia();
         MainActivity.GioHang.get( position ).setSoNguoi( Integer.valueOf( soNguoi ) );
@@ -98,6 +101,7 @@ public class TourDaDatReCyclerAdapter extends RecyclerView.Adapter<TourDaDatReCy
         TextView tv_giaTourDaDat;
         TextView tv_thanhTienGioHang;
         TextView tv_soNguoi;
+        TextView tv_DiaDiem;
         ImageView img_delete;
 
         Button btn_themNguoi;
@@ -105,6 +109,8 @@ public class TourDaDatReCyclerAdapter extends RecyclerView.Adapter<TourDaDatReCy
 
         public RecyclerViewHolder(@NonNull View itemView) {
             super( itemView );
+            tv_DiaDiem=itemView.findViewById( R.id.gio_hang_row_tv_DiaDiem );
+
             btn_truNguoi = itemView.findViewById( R.id.gio_hang_btn_TruNguoi );
             btn_themNguoi = itemView.findViewById( R.id.gio_hang_btn_ThemNguoi );
             img_delete = itemView.findViewById( R.id.gio_hang_img_XoaTour );

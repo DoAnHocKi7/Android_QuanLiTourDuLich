@@ -17,6 +17,8 @@ import com.example.tranthibay.ql_tourdulich.Presenter.ThanhToan.ThanhToanLogicPr
 import com.example.tranthibay.ql_tourdulich.R;
 import com.example.tranthibay.ql_tourdulich.View.MainActivity;
 
+import java.util.ArrayList;
+
 public class ThanhToanActivity extends AppCompatActivity implements ThanhToanView {
     /*-------------Get Khach Hang---------------*/
     private EditText edt_hoKH;
@@ -118,6 +120,8 @@ public class ThanhToanActivity extends AppCompatActivity implements ThanhToanVie
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+
+        MainActivity.GioHang=new ArrayList<>();
 
 
     }

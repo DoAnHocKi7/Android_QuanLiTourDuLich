@@ -13,13 +13,13 @@
         android:layout_height="140dp"
         app:srcCompat="@drawable/ho_guom" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="TextView"
-        android:textColor="#ed5d03" />
+    <!--<TextView-->
+        <!--android:id="@+id/textView6"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:gravity="center"-->
+        <!--android:text="TextView"-->
+        <!--android:textColor="#ed5d03" />-->
 
     <TextView
         android:id="@+id/tv_TenTour"

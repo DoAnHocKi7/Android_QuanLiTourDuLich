@@ -8,5 +8,8 @@
         android:title="Giỏ hàng" />
     <item
         android:id="@+id/item3"
-        android:title="Cài đặt" />
+        android:title="Tìm kiếm" />
+    <!--<item-->
+        <!--android:id="@+id/item4"-->
+        <!--android:title="Tài khoản" />-->
 </menu>

@@ -13,29 +13,36 @@
         android:roundIcon="@mipmap/icon_main"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".View.DangNhap.LoginActivity" >
+        <activity android:name=".View.DangNhap.LoginActivity">
             <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".View.DangKy.SignUpActivity" />
+        <activity android:name=".View.MainActivity2">
 
-        <activity android:name=".View.MainActivity2" >
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN" />-->
-            <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+
         </activity>
-
-        <activity android:name=".View.MainActivity">
+        <activity
+            android:name=".View.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
         </activity>
-
-
         <activity android:name=".View.ChiTietTour.ChiTietTourActivity" />
-        <activity android:name=".View.GioHang.GioHangActivity"></activity>
-        <activity android:name=".View.MuaHang.MuaHangActivity"></activity>
-        <activity android:name=".View.ThanhToan.ThanhToanActivity"></activity>
+        <activity android:name=".View.GioHang.GioHangActivity" />
+        <activity android:name=".View.MuaHang.MuaHangActivity" />
+        <activity android:name=".View.ThanhToan.ThanhToanActivity" />
+
+        <activity
+            android:name=".View.TimKiemTour.TimKiemActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+
+        </activity>
+
     </application>
 
 </manifest>

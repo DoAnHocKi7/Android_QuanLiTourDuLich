@@ -298,11 +298,18 @@ Nhằm phục vụ khách hàng được tốt hơn và thu hút khách hàng nh
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <GridView
-                        android:id="@+id/chi_tiet_tour_gidview_tour_lien_quan"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:numColumns="3" />
+                    <android.support.v7.widget.RecyclerView
+                    android:id="@+id/chi_tiet_tour_gidview_tour_lien_quan"
+
+                    android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                    </android.support.v7.widget.RecyclerView>
+                    <!--<GridView-->
+                        <!--android:id="@+id/chi_tiet_tour_gidview_tour_lien_quan"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:numColumns="3" />-->
                 </LinearLayout>
 
             </LinearLayout>

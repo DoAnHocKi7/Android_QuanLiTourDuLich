@@ -10,12 +10,14 @@ public class TourDaChonModel implements Serializable{
     private Date ngayDat;
     private double tongTien;
     private TourModel tourModel;
+    //private String tenDiaDiem;
 
     public TourDaChonModel(int soNguoi, Date ngayDat, double tongTien, TourModel tourModel) {
         this.soNguoi = soNguoi;
         this.ngayDat = ngayDat;
         this.tongTien = tongTien;
         this.tourModel = tourModel;
+        //this.tenDiaDiem= ptenDiaDiem;
     }
 
     public TourDaChonModel() {

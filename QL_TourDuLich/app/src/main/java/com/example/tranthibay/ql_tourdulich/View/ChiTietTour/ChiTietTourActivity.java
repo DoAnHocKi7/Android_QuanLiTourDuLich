@@ -7,19 +7,20 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.tranthibay.ql_tourdulich.Adapter.TourLienQuanAdapter;
+import com.example.tranthibay.ql_tourdulich.Adapter.TourRecyclerViewAdapter;
 import com.example.tranthibay.ql_tourdulich.Constants.PHPConnectionConstants;
 import com.example.tranthibay.ql_tourdulich.Constants.TourConstants;
 import com.example.tranthibay.ql_tourdulich.Model.MuaHang.TourDaChonModel;
@@ -33,7 +34,6 @@ import com.example.tranthibay.ql_tourdulich.View.DangNhap.LoginActivity;
 import com.example.tranthibay.ql_tourdulich.View.GioHang.GioHangActivity;
 import com.example.tranthibay.ql_tourdulich.View.MainActivity;
 import com.example.tranthibay.ql_tourdulich.View.MuaHang.MuaHangActivity;
-import com.example.tranthibay.ql_tourdulich.View.ThanhToan.ThanhToanActivity;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -58,7 +58,7 @@ public class ChiTietTourActivity extends AppCompatActivity implements ChiTietTou
     private TextView tv_GiaKS;
     private TextView tv_diaChi;
     private TextView tv_dChiKS;
-    private GridView grv_tourLienQuan;
+    private RecyclerView mRecyclerView;
     /*-------------------------*/
 
 
@@ -97,7 +97,7 @@ public class ChiTietTourActivity extends AppCompatActivity implements ChiTietTou
         tv_dChiKS = (TextView) findViewById( R.id.chi_tiet_tour_tv_DiaChiKS );
         tv_GiaKS = (TextView) findViewById( R.id.chi_tiet_tour_tv_GiaKhachSan );
         tv_diaChi = (TextView) findViewById( R.id.chi_tiet_tour_tv_DiaDiem );
-        grv_tourLienQuan=(GridView)findViewById( R.id.chi_tiet_tour_gidview_tour_lien_quan );
+        mRecyclerView =(RecyclerView) findViewById( R.id.chi_tiet_tour_gidview_tour_lien_quan );
 
         btn_datTourNgay = (Button) findViewById( R.id.chi_tiet_tour_btn_DatTour_ngay );
         btn_themTourVaoGio = (Button) findViewById( R.id.chi_tiet_tour_btn_ThemVaoGio );
@@ -154,8 +154,8 @@ public class ChiTietTourActivity extends AppCompatActivity implements ChiTietTou
                             Date ngayDen = new SimpleDateFormat( "yyyy-dd-MM" ).parse( item.getString( "ngayketthuc" ) );
                             tour = new TourModel( ngayDi, ngayDen, ma, ten, img, gia, loai, mota, diaDiem, khachSan );
 
-                            TourLienQuanAdapter adapter=new TourLienQuanAdapter(ChiTietTourActivity.this,R.layout.item_row_tour_lien_quan,tourModels);
-                            grv_tourLienQuan.setAdapter( adapter );
+//                            TourLienQuanAdapter adapter=new TourLienQuanAdapter(ChiTietTourActivity.this,R.layout.item_row_tour_lien_quan,tourModels);
+//                            mRecyclerView.setAdapter( adapter );
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
@@ -163,6 +163,11 @@ public class ChiTietTourActivity extends AppCompatActivity implements ChiTietTou
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+                    TourRecyclerViewAdapter mRcvAdapter = new TourRecyclerViewAdapter( tourModels, ChiTietTourActivity.this );
+                    GridLayoutManager layoutManager = new GridLayoutManager( ChiTietTourActivity.this, 2 );
+                    layoutManager.setOrientation( LinearLayoutManager.VERTICAL );
+                    mRecyclerView.setLayoutManager( layoutManager );
+                    mRecyclerView.setAdapter( mRcvAdapter );
                 }
             }
         } );

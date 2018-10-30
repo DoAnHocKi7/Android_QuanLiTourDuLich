@@ -394,14 +394,18 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingLeft="40dp"
-                            android:text="Ten" />
+                            android:text="Ten"
+                            android:textColor="@android:color/holo_red_light"
+                            android:textSize="24sp" />
 
                         <TextView
                             android:id="@+id/mua_hang_tv_SdtKH"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingLeft="40dp"
-                            android:text="So dien thoai" />
+                            android:text="So dien thoai"
+                            android:textColor="@android:color/holo_red_light"
+                            android:textSize="24sp" />
                     </LinearLayout>
 
                     <android.support.constraint.ConstraintLayout

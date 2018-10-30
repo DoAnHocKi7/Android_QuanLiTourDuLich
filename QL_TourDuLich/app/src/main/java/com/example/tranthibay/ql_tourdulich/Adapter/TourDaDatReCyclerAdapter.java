@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tranthibay.ql_tourdulich.Model.MuaHang.TourDaChonModel;
+import com.example.tranthibay.ql_tourdulich.Presenter.GioHang.GioHangLogicPresenter;
 import com.example.tranthibay.ql_tourdulich.R;
 import com.example.tranthibay.ql_tourdulich.View.MainActivity;
 import com.squareup.picasso.Picasso;
@@ -39,7 +40,7 @@ public class TourDaDatReCyclerAdapter extends RecyclerView.Adapter<TourDaDatReCy
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
         holder.tv_soNguoi.setText( String.valueOf( data.get( position ).getSoNguoi() ) );
         holder.tv_giaTourDaDat.setText( "Giá tour: " + String.valueOf( data.get( position ).getTourModel().getGia() ) );
-        holder.tv_thanhTienGioHang.setText( "Tổng tiền: " + String.valueOf( data.get( position ).getTongTien() ) );
+        holder.tv_thanhTienGioHang.setText( "Thành tiền: " + String.valueOf( data.get( position ).getTongTien() ) );
         String imgSrc = data.get( position ).getTourModel().getHinhAnh();
         Picasso.get().load( imgSrc ).into( holder.img_tourDaDat );
         holder.tv_DiaDiem.setText( data.get( position ). getTourModel().getDiaDiem());
@@ -80,19 +81,21 @@ public class TourDaDatReCyclerAdapter extends RecyclerView.Adapter<TourDaDatReCy
         MainActivity.GioHang.get( position ).setTongTien(tongTien);
         data.get( position ).setSoNguoi( soNguoi );
         data.get( position ).setTongTien( tongTien );
-        holder.tv_thanhTienGioHang.setText( String.valueOf( tongTien ) );
+        holder.tv_thanhTienGioHang.setText( "Thành tiền: " +String.valueOf( tongTien ) );
         holder.tv_soNguoi.setText( String.valueOf( soNguoi ) );
     }
 
     private void themNguoi(RecyclerViewHolder holder, int position) {
-
+//        GioHangLogicPresenter gioHangLogicPresenter=new GioHangLogicPresenter();
+//        double tongTien=gioHangLogicPresenter.tinhTongTien( MainActivity.GioHang );
+//        TextView obj=(TextView)get
         int soNguoi = data.get( position ).getSoNguoi() + 1;
-        double tongTien = soNguoi * data.get( position ).getTourModel().getGia();
+        double thanhTien = soNguoi * data.get( position ).getTourModel().getGia();
         MainActivity.GioHang.get( position ).setSoNguoi( Integer.valueOf( soNguoi ) );
-        MainActivity.GioHang.get( position ).setTongTien(tongTien);
+        MainActivity.GioHang.get( position ).setTongTien( thanhTien );
         data.get( position ).setSoNguoi( soNguoi );
-        data.get( position ).setTongTien( tongTien );
-        holder.tv_thanhTienGioHang.setText( String.valueOf( tongTien ) );
+        data.get( position ).setTongTien( thanhTien );
+        holder.tv_thanhTienGioHang.setText("Thành tiền: " +String.valueOf( thanhTien ) );
         holder.tv_soNguoi.setText( String.valueOf( soNguoi ) );
     }
 

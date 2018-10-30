@@ -44,7 +44,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="15sp" />
 
         </LinearLayout>
 

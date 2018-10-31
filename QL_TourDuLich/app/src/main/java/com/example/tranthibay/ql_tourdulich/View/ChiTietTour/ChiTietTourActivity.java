@@ -128,7 +128,7 @@ public class ChiTietTourActivity extends AppCompatActivity implements ChiTietTou
         ChiTietTourLogicPresenter tourLogicPresenter = new ChiTietTourLogicPresenter( this );
         tourLogicPresenter.getTourLienQuan( tour.getLoaiTour(), this, new VolleyCallback() {
             @Override
-            public void onSuccess(JSONArray result) {
+            public void onSuccess(JSONArray result)  {
                 ArrayList<TourModel> tourModels=new ArrayList<>(  );
                 TourModel tour = null;
                 KhachSanModel khachSan = null;
